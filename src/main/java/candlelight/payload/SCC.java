@@ -1,4 +1,4 @@
-package candlelight.datapack;
+package candlelight.payload;
 
 public class SCC {
     private final int[][] components;

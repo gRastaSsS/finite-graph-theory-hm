@@ -1,7 +1,7 @@
 package candlelight;
 
-import candlelight.datapack.SCC;
-import candlelight.datapack.WCC;
+import candlelight.payload.SCC;
+import candlelight.payload.WCC;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntStack;
@@ -91,5 +91,29 @@ public class GraphUtil {
         }
 
         return new WCC(components.toArray(new int[0][]));
+    }
+
+    public static IntList getDegrees(FastGraph graph) {
+        IntList degrees = new IntArrayList();
+
+        for (int v : graph.getVertices()) {
+            degrees.add(graph.getEdges(v).size());
+        }
+
+        return degrees;
+    }
+
+    public static float getUndirectedAverageDegree(FastGraph graph) {
+        return (float) graph.E() / graph.V();
+    }
+
+    public static int getMaxDegree(FastGraph graph) {
+        int max = 0;
+
+        for (int v : graph.getVertices()) {
+            max = Math.max(graph.getEdges(v).size(), max);
+        }
+
+        return max;
     }
 }

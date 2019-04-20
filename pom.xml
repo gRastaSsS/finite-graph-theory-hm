@@ -42,5 +42,10 @@
             <version>8.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.knowm.xchart</groupId>
+            <artifactId>xchart</artifactId>
+            <version>3.5.2</version>
+        </dependency>
     </dependencies>
 </project>

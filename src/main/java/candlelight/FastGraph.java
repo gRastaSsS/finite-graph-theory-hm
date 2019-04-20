@@ -1,65 +1,80 @@
 package candlelight;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntStack;
+import it.unimi.dsi.fastutil.ints.*;
 import org.gephi.graph.api.Edge;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //https://www.geeksforgeeks.org/strongly-connected-components/
 public class FastGraph {
-    private IntList[] adj;
-
-    //private Int2ObjectMap<IntList> adj;
+    private Int2ObjectMap<IntSet> adj;
 
     public FastGraph(Graph graph) {
-        this.adj = new IntList[graph.getNodeCount()];
+        this.adj = new Int2ObjectOpenHashMap<>(graph.getNodeCount());
 
-        for (int i = 0; i < V(); ++i)
-            adj[i] = new IntArrayList();
+        for (int i = 0; i < graph.getNodeCount(); ++i)
+            adj.put(i, new IntOpenHashSet());
 
         for (Node node : graph.getNodes()) {
             int index = node.getStoreId();
 
             for (Edge edge : graph.getEdges(node)) {
                 if (edge.getSource().getStoreId() == index) {
-                    adj[index].add(edge.getTarget().getStoreId());
+                    adj.get(index).add(edge.getTarget().getStoreId());
                 }
             }
         }
     }
 
     public FastGraph(int V) {
-        this.adj = new IntList[V];
-
-        for (int i = 0; i < V; ++i)
-            adj[i] = new IntArrayList();
+        this.adj = new Int2ObjectOpenHashMap<>(V);
     }
 
     public void addEdge(int v, int w) {
-        adj[v].add(w);
+        adj.computeIfAbsent(v, i -> new IntOpenHashSet()).add(w);
     }
 
     public boolean hasEdge(int v, int w) {
-        return adj[v].contains(w);
+        IntSet s = adj.get(v);
+        return s != null && s.contains(w);
+    }
+
+    public IntSet getEdges(int v) {
+        return adj.computeIfAbsent(v, i -> new IntOpenHashSet());
+    }
+
+    public IntSet getVertices() {
+        return adj.keySet();
     }
 
     public int V() {
-        return adj.length;
+        return adj.size();
+    }
+
+    public int E() {
+        int r = 0;
+
+        for (int v : getVertices()) {
+            IntSet edges = getEdges(v);
+            r += edges.size();
+        }
+
+        return r;
     }
 
     public FastGraph makeUndirected() {
         FastGraph copy = new FastGraph(V());
 
-        for (int from = 0; from < adj.length; from++) {
-            for (int to : adj[from]) {
-                copy.addEdge(from, to);
+        for (int from = 0; from < adj.size(); from++) {
+            for (int to : getEdges(from)) {
+                if (!copy.hasEdge(from, to))
+                    copy.addEdge(from, to);
 
-                if (!copy.hasEdge(to, from)) {
+                if (!copy.hasEdge(to, from))
                     copy.addEdge(to, from);
-                }
             }
         }
 
@@ -70,8 +85,8 @@ public class FastGraph {
         FastGraph g = new FastGraph(V());
 
         for (int v = 0; v < V(); v++) {
-            for (int i : adj[v])
-                g.adj[i].add(v);
+            for (int i : getEdges(v))
+                g.addEdge(i, v);
         }
 
         return g;
@@ -81,7 +96,7 @@ public class FastGraph {
         visited[v] = true;
         result.add(v);
 
-        for (int n : adj[v]) {
+        for (int n : getEdges(v)) {
             if (!visited[n]) {
                 dfs(n, visited, result);
             }
@@ -91,7 +106,7 @@ public class FastGraph {
     public void fillOrder(int v, boolean[] visited, IntStack stack) {
         visited[v] = true;
 
-        for (int n : adj[v]) {
+        for (int n : getEdges(v)) {
             if (!visited[n])
                 fillOrder(n, visited, stack);
         }

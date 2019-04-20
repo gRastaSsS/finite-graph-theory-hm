@@ -1,4 +1,4 @@
-package candlelight.datapack;
+package candlelight.payload;
 
 public class WCC {
     private final int[][] components;
