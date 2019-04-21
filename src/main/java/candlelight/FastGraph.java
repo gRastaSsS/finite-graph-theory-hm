@@ -5,12 +5,10 @@ import org.gephi.graph.api.Edge;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
 
-import java.util.ArrayList;
-import java.util.List;
-
 //https://www.geeksforgeeks.org/strongly-connected-components/
 public class FastGraph {
     private Int2ObjectMap<IntSet> adj;
+    private long version;
 
     public FastGraph(Graph graph) {
         this.adj = new Int2ObjectOpenHashMap<>(graph.getNodeCount());
@@ -27,13 +25,18 @@ public class FastGraph {
                 }
             }
         }
+
+        this.version = 0;
     }
 
     public FastGraph(int V) {
         this.adj = new Int2ObjectOpenHashMap<>(V);
+        this.version = 0;
     }
 
     public void addEdge(int v, int w) {
+        ++version;
+
         adj.computeIfAbsent(v, i -> new IntOpenHashSet()).add(w);
     }
 

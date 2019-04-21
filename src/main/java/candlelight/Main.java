@@ -1,5 +1,6 @@
 package candlelight;
 
+import candlelight.payload.VMatrix;
 import candlelight.payload.SCC;
 import candlelight.payload.WCC;
 import it.unimi.dsi.fastutil.ints.*;
@@ -18,7 +19,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         srcGraph = Loader.load("getaway/vk-friends.gexf");
 
-        task20(task10(new FastGraph(srcGraph)));
+        //task40(task30(task20(task10(new FastGraph(srcGraph)))));
+
+        task40(task10(new FastGraph(srcGraph)));
     }
 
     private static FastGraph task10(FastGraph graph) {
@@ -31,9 +34,11 @@ public class Main {
         return GraphUtil.ofComponent(wcc.maxComponent(), graph).makeUndirected();
     }
 
-    private static void task20(FastGraph graph) {
+    private static FastGraph task20(FastGraph graph) {
         task20_1(graph);
         task20_2(graph);
+
+        return graph;
     }
 
     private static void task20_1(FastGraph graph) {
@@ -91,12 +96,30 @@ public class Main {
     }
 
     private static void task20_2(FastGraph graph) {
-        //for (int v : graph.getVertices()) {
-        //    System.out.println(v + ": " + graph.getEdges(v));
-        //}
+        VMatrix shortest = GraphUtil.undirShortestPaths(graph);
 
-        graph.printAllPaths(0, 1);
+        System.out.println("Diameter: " + shortest.maxmax());
+        System.out.println("Radius: " + shortest.minmax());
+        System.out.println("Central: " + shortest.minmaxVertices());
+        System.out.println("Peripheral: " + shortest.maxmaxVertices());
+        System.out.println("Average: " + shortest.average());
+    }
 
-       // System.out.println("af");
+    private static FastGraph task30(FastGraph graph) {
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                System.out.println("Pair " + v0 + " : " + v1);
+                System.out.println("Common neighbors: " + GraphUtil.commonNeighborsIndex(graph, v0, v1));
+                System.out.println("Jaccards: " + GraphUtil.jaccardsIndex(graph, v0, v1));
+                System.out.println("Adamic-Adar: " + GraphUtil.adamicAdarIndex(graph, v0, v1));
+                System.out.println("Preferential Attachment: " + GraphUtil.preferentialAttachmentIndex(graph, v0, v1));
+            }
+        }
+
+        return graph;
+    }
+
+    private static void task40(FastGraph graph) {
+        System.out.println(GraphUtil.closenessCentrality(graph, 5));
     }
 }

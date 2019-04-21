@@ -1,10 +1,9 @@
 package candlelight;
 
+import candlelight.payload.VMatrix;
 import candlelight.payload.SCC;
 import candlelight.payload.WCC;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntStack;
+import it.unimi.dsi.fastutil.ints.*;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
 
@@ -13,6 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
+
+import static candlelight.Constants.MAX_MATRIX_VALUE;
 
 public class GraphUtil {
     public static void printNodeAttribute(Graph graph, String name, int nodeId) {
@@ -115,5 +116,88 @@ public class GraphUtil {
         }
 
         return max;
+    }
+
+    public static VMatrix undirShortestPaths(FastGraph graph) {
+        VMatrix res = new VMatrix();
+
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                if (graph.hasEdge(v0, v1)) {
+                    res.put(v0, v1, 1);
+                    res.put(v1, v0, 1);
+                }
+
+                else {
+                    res.put(v0, v1, MAX_MATRIX_VALUE);
+                    res.put(v1, v0, MAX_MATRIX_VALUE);
+                }
+            }
+        }
+
+        for (int k : graph.getVertices()) {
+            for (int i : graph.getVertices()) {
+                for (int j : graph.getVertices()) {
+                    int val = Math.min(res.get(i, j), res.get(i, k) + res.get(k, j));
+                    res.put(i, j, val);
+                }
+            }
+        }
+
+        return res;
+    }
+
+    public static float commonNeighborsIndex(FastGraph graph, int v0, int v1) {
+        IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
+        intersection.retainAll(graph.getEdges(v1));
+
+        return intersection.size();
+    }
+
+    public static float jaccardsIndex(FastGraph graph, int v0, int v1) {
+        IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
+        intersection.retainAll(graph.getEdges(v1));
+
+        IntSet union = new IntOpenHashSet(graph.getEdges(v0));
+        union.addAll(graph.getEdges(v1));
+
+        return (float) intersection.size() / union.size();
+    }
+
+    public static float adamicAdarIndex(FastGraph graph, int v0, int v1) {
+        IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
+        intersection.retainAll(graph.getEdges(v1));
+
+        float res = 0;
+
+        for (int v : intersection) {
+            res = res + 1 / (float) Math.log(graph.getEdges(v).size());
+        }
+
+        return res;
+    }
+
+    public static float preferentialAttachmentIndex(FastGraph graph, int v0, int v1) {
+        return graph.getEdges(v0).size() * graph.getEdges(v1).size();
+    }
+
+    public static float degreeCenrality(FastGraph graph, int v) {
+        return graph.getEdges(v).size();
+    }
+
+    public static float closenessCentrality(FastGraph graph, int v) {
+        VMatrix paths = undirShortestPaths(graph);
+
+        IntSet vertices = graph.getVertices();
+
+        float s = 0;
+        for (int e : vertices)
+            s += paths.get(v, e);
+
+        return (vertices.size() - 1) / s;
+    }
+
+    public static float betweennessCentrality(FastGraph graph, int v) {
+
     }
 }
