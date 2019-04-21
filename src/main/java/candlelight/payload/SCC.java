@@ -1,5 +1,7 @@
 package candlelight.payload;
 
+import java.util.Arrays;
+
 public class SCC {
     private final int[][] components;
 
@@ -9,9 +11,14 @@ public class SCC {
 
     @Override
     public String toString() {
-        return "Number of strongly connected components: " + components.length + "\n" +
-                "Max strongly connected component size: " + maxComponent().length + "\n" +
-                "Max strongly connected component size (relatively): " + maxComponentSizeRelative() + "\n";
+        StringBuilder out = new StringBuilder("Number of strongly connected components: " + components.length + ".\n");
+        out.append("Components: \n");
+
+        for (int[] c : components) {
+            out.append(Arrays.toString(c)).append("; Number of vertices: ").append(c.length).append(".\n");
+        }
+
+        return out.toString();
     }
 
     public int[] maxComponent() {

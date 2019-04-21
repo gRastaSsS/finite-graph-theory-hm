@@ -118,9 +118,8 @@ public class GraphUtil {
     public static int getMaxDegree(FastGraph graph) {
         int max = 0;
 
-        for (int v : graph.getVertices()) {
+        for (int v : graph.getVertices())
             max = Math.max(graph.getEdges(v).size(), max);
-        }
 
         return max;
     }

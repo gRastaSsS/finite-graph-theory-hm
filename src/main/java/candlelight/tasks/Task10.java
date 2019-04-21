@@ -13,10 +13,10 @@ public class Task10 {
         WCC wcc = GraphUtil.weaklyConnectedComponents(graph);
         SCC scc = GraphUtil.stronglyConnectedComponents(graph);
 
-        try (PrintWriter out = new PrintWriter("filename.txt")) {
-            out.write(wcc.toString());
-            out.write("\n");
+        try (PrintWriter out = new PrintWriter("task10.txt")) {
             out.write(scc.toString());
+            out.write("\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n");
+            out.write(wcc.toString());
         }
 
         return GraphUtil.ofComponent(wcc.maxComponent(), graph).makeUndirected();
