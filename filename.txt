@@ -1,0 +1,6 @@
+Number of weakly connected components: 5
+Max weakly connected component size: 79
+Max weakly connected component size (relatively): 0.9404762
+Number of strongly connected components: 7
+Max strongly connected component size: 72
+Max strongly connected component size (relatively): 0.85714287

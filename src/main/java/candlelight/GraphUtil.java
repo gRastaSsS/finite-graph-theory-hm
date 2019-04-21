@@ -1,14 +1,18 @@
 package candlelight;
 
-import candlelight.payload.OMatrix;
-import candlelight.payload.SCC;
-import candlelight.payload.IMatrix;
-import candlelight.payload.WCC;
+import candlelight.payload.*;
 import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
+import org.la4j.Matrices;
+import org.la4j.Matrix;
+import org.la4j.Vector;
+import org.la4j.decomposition.EigenDecompositor;
+import org.la4j.decomposition.MatrixDecompositor;
+import org.la4j.vector.dense.BasicVector;
+import org.la4j.vector.functor.VectorPredicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -184,20 +188,63 @@ public class GraphUtil {
         return graph.getEdges(v0).size() * graph.getEdges(v1).size();
     }
 
-    public static float degreeCenrality(FastGraph graph, int v) {
-        return graph.getEdges(v).size();
+    public static Int2FloatMap eigenVectorCentrality(FastGraph graph) {
+        Int2FloatMap result = new Int2FloatOpenHashMap();
+
+        Matrix adjMatrix = graph.toAdjMatrix();
+
+        MatrixDecompositor d = new EigenDecompositor(adjMatrix);
+
+        Matrix[] res = d.decompose();
+
+        Matrix lambdas = res[1];
+
+        double maxLambda = Double.MIN_VALUE;
+        int vecIndex = 0;
+
+        for (int i = 0; i < lambdas.columns(); i++) {
+            if (maxLambda < lambdas.get(i, i)) {
+                maxLambda = lambdas.get(i, i);
+                vecIndex = i;
+            }
+        }
+
+        Vector coeff = res[0].getColumn(vecIndex);
+
+        for (int v : graph.getVertices()) {
+            result.put(v, (float) coeff.get(v));
+        }
+
+        return result;
     }
 
-    public static float closenessCentrality(FastGraph graph, int v) {
+    public static Int2FloatMap degreeCenrality(FastGraph graph) {
+        Int2FloatMap result = new Int2FloatOpenHashMap();
+
+        for (int v : graph.getVertices()) {
+            result.put(v, graph.getEdges(v).size());
+        }
+
+        return result;
+    }
+
+    public static Int2FloatMap closenessCentrality(FastGraph graph) {
         IMatrix paths = undirectedShortestPaths(graph);
 
         IntSet vertices = graph.getVertices();
 
-        float s = 0;
-        for (int e : vertices)
-            s += paths.get(v, e);
+        Int2FloatMap result = new Int2FloatOpenHashMap();
 
-        return (vertices.size() - 1) / s;
+        for (int v : graph.getVertices()) {
+            float s = 0;
+            for (int e : vertices)
+                s += paths.get(v, e);
+
+            s = (vertices.size() - 1) / s;
+            result.put(v, s);
+        }
+
+        return result;
     }
 
     public static Int2FloatMap betweennessCentrality(FastGraph graph) {
@@ -238,6 +285,61 @@ public class GraphUtil {
             }
 
             result.put(v, res);
+        }
+
+        return result;
+    }
+
+    public static FMatrix edgeBetweennessCentrality(FastGraph graph) {
+        FMatrix result = new FMatrix();
+
+        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
+
+        OMatrix<ObjectList<IntList>> shortestPaths = new OMatrix<>(graph.getVertices().size() * graph.getVertices().size());
+
+        for (int s : graph.getVertices()) {
+            for (int t : graph.getVertices()) {
+                if (s != t && shortestPaths.get(s, t) == null) {
+                    ObjectList<IntList> res = findAllPaths(graph, s, t, shortest.get(s, t) + 1);
+                    shortestPaths.put(s, t, res);
+                    shortestPaths.put(t, s, res);
+                }
+            }
+        }
+
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                if (graph.hasEdge(v0, v1)) {
+                    float res = 0;
+
+                    for (int s : graph.getVertices()) {
+                        for (int t : graph.getVertices()) {
+                            if (s != t) {
+                                ObjectList<IntList> paths = shortestPaths.get(s, t);
+
+                                int sigma = paths.size();
+
+                                int sigmaV = (int) paths
+                                        .stream()
+                                        .filter(integers -> {
+                                            int v0Index = integers.indexOf(v0);
+
+                                            if (v0Index != -1) {
+                                                return integers.size() > (v0Index + 1) && integers.getInt(v0Index + 1) == v1;
+                                            }
+
+                                            return false;
+                                        })
+                                        .count();
+
+                                res = res + (float) sigmaV / sigma;
+                            }
+                        }
+                    }
+
+                    result.put(v0, v1, res);
+                }
+            }
         }
 
         return result;

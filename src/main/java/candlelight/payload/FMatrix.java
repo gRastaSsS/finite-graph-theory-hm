@@ -16,6 +16,10 @@ public class FMatrix {
         vertices = new IntOpenHashSet();
     }
 
+    public IntSet vertices() {
+        return vertices;
+    }
+
     public float get(int i, int j) {
         return core.get(TD08_II_L(i, j));
     }

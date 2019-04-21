@@ -4,6 +4,10 @@ import it.unimi.dsi.fastutil.ints.*;
 import org.gephi.graph.api.Edge;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
+import org.la4j.Matrix;
+import org.la4j.matrix.dense.Basic2DMatrix;
+
+import java.util.Comparator;
 
 //https://www.geeksforgeeks.org/strongly-connected-components/
 public class FastGraph {
@@ -73,6 +77,20 @@ public class FastGraph {
         }
 
         return r;
+    }
+
+    public Matrix toAdjMatrix() {
+        int size = getVertices().stream().max(Comparator.comparingInt(integer -> integer)).get() + 1;
+
+        Matrix matrix = new Basic2DMatrix(size, size);
+
+        for (int v0 : getVertices()) {
+            for (int v1 : getEdges(v0)) {
+                matrix.set(v0, v1, 1);
+            }
+        }
+
+        return matrix;
     }
 
     public FastGraph makeUndirected() {

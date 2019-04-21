@@ -1,8 +1,10 @@
 package candlelight;
 
+import candlelight.payload.FMatrix;
 import candlelight.payload.IMatrix;
 import candlelight.payload.SCC;
 import candlelight.payload.WCC;
+import candlelight.tasks.Task10;
 import it.unimi.dsi.fastutil.ints.*;
 import org.gephi.graph.api.Graph;
 import org.knowm.xchart.CategoryChart;
@@ -19,9 +21,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         srcGraph = Loader.load("getaway/vk-friends.gexf");
 
-        //task40(task30(task20(task10(new FastGraph(srcGraph)))));
-
-        task40(task10(new FastGraph(srcGraph)));
+        Task10.run(new FastGraph(srcGraph));
     }
 
     private static FastGraph task10(FastGraph graph) {
@@ -120,6 +120,12 @@ public class Main {
     }
 
     private static void task40(FastGraph graph) {
+        FMatrix f = GraphUtil.edgeBetweennessCentrality(graph);
 
+        for (int v0 : f.vertices()) {
+            for (int v1 : f.vertices()) {
+                System.out.println(v0 + " " + v1 + ": " + f.get(v0, v1));
+            }
+        }
     }
 }
