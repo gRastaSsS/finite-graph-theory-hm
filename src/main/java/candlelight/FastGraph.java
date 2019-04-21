@@ -40,6 +40,13 @@ public class FastGraph {
         adj.computeIfAbsent(v, i -> new IntOpenHashSet()).add(w);
     }
 
+    public void addUndirectedEdge(int v, int w) {
+        ++version;
+
+        adj.computeIfAbsent(v, i -> new IntOpenHashSet()).add(w);
+        adj.computeIfAbsent(w, i -> new IntOpenHashSet()).add(v);
+    }
+
     public boolean hasEdge(int v, int w) {
         IntSet s = adj.get(v);
         return s != null && s.contains(w);

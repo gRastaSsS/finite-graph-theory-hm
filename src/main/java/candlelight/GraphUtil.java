@@ -1,9 +1,12 @@
 package candlelight;
 
-import candlelight.payload.VMatrix;
+import candlelight.payload.OMatrix;
 import candlelight.payload.SCC;
+import candlelight.payload.IMatrix;
 import candlelight.payload.WCC;
 import it.unimi.dsi.fastutil.ints.*;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
 
@@ -118,8 +121,8 @@ public class GraphUtil {
         return max;
     }
 
-    public static VMatrix undirShortestPaths(FastGraph graph) {
-        VMatrix res = new VMatrix();
+    public static IMatrix undirectedShortestPaths(FastGraph graph) {
+        IMatrix res = new IMatrix();
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
@@ -186,7 +189,7 @@ public class GraphUtil {
     }
 
     public static float closenessCentrality(FastGraph graph, int v) {
-        VMatrix paths = undirShortestPaths(graph);
+        IMatrix paths = undirectedShortestPaths(graph);
 
         IntSet vertices = graph.getVertices();
 
@@ -197,7 +200,81 @@ public class GraphUtil {
         return (vertices.size() - 1) / s;
     }
 
-    public static float betweennessCentrality(FastGraph graph, int v) {
+    public static Int2FloatMap betweennessCentrality(FastGraph graph) {
+        Int2FloatMap result = new Int2FloatOpenHashMap();
 
+        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
+
+        OMatrix<ObjectList<IntList>> shortestPaths = new OMatrix<>(graph.getVertices().size() * graph.getVertices().size());
+
+        for (int s : graph.getVertices()) {
+            for (int t : graph.getVertices()) {
+                if (s != t && shortestPaths.get(s, t) == null) {
+                    ObjectList<IntList> res = findAllPaths(graph, s, t, shortest.get(s, t) + 1);
+                    shortestPaths.put(s, t, res);
+                    shortestPaths.put(t, s, res);
+                }
+            }
+        }
+
+        for (int v : graph.getVertices()) {
+            float res = 0;
+
+            for (int s : graph.getVertices()) {
+                for (int t : graph.getVertices()) {
+                    if (s != t && s != v && t != v) {
+                        ObjectList<IntList> paths = shortestPaths.get(s, t);
+
+                        int sigma = paths.size();
+
+                        int sigmaV = (int) paths
+                                .stream()
+                                .filter(integers -> integers.contains(v))
+                                .count();
+
+                        res = res + (float) sigmaV / sigma;
+                    }
+                }
+            }
+
+            result.put(v, res);
+        }
+
+        return result;
+    }
+
+    private static ObjectList<IntList> findAllPaths(FastGraph graph, int s, int d, int maxPathLength) {
+        Int2BooleanMap isVisited = new Int2BooleanOpenHashMap(graph.V());
+
+        ObjectList<IntList> result = new ObjectArrayList<>();
+
+        IntList pathList = new IntArrayList();
+        pathList.add(s);
+
+        findAllPathsRec(graph, s, d, isVisited, pathList, maxPathLength, result);
+
+        return result;
+    }
+
+    private static void findAllPathsRec(FastGraph graph, int u, int d, Int2BooleanMap isVisited, IntList tempList, int maxPathLength, ObjectList<IntList> result) {
+        if (tempList.size() > maxPathLength) return;
+
+        isVisited.put(u, true);
+
+        if (u == d) {
+            result.add(new IntArrayList(tempList));
+            isVisited.put(u, false);
+            return;
+        }
+
+        for (int i : graph.getEdges(u)) {
+            if (!isVisited.get(i)) {
+                tempList.add(i);
+                findAllPathsRec(graph, i, d, isVisited, tempList, maxPathLength, result);
+                tempList.rem(i);
+            }
+        }
+
+        isVisited.put(u, false);
     }
 }

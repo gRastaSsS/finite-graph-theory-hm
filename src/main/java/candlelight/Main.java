@@ -1,6 +1,6 @@
 package candlelight;
 
-import candlelight.payload.VMatrix;
+import candlelight.payload.IMatrix;
 import candlelight.payload.SCC;
 import candlelight.payload.WCC;
 import it.unimi.dsi.fastutil.ints.*;
@@ -96,7 +96,7 @@ public class Main {
     }
 
     private static void task20_2(FastGraph graph) {
-        VMatrix shortest = GraphUtil.undirShortestPaths(graph);
+        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
 
         System.out.println("Diameter: " + shortest.maxmax());
         System.out.println("Radius: " + shortest.minmax());
@@ -120,6 +120,6 @@ public class Main {
     }
 
     private static void task40(FastGraph graph) {
-        System.out.println(GraphUtil.closenessCentrality(graph, 5));
+
     }
 }

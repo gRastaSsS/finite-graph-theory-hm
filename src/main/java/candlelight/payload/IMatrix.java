@@ -5,18 +5,15 @@ import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 
 import static candlelight.Constants.MAX_MATRIX_VALUE;
+import static candlelight.mapper.IndexMapper.TD08_II_L;
 
-public class VMatrix {
+public class IMatrix {
     private final Long2IntMap core;
     private final IntSet vertices;
 
-    public VMatrix() {
+    public IMatrix() {
         core = new Long2IntOpenHashMap();
         vertices = new IntOpenHashSet();
-    }
-
-    private long TD08_II_L(int v0, int v1) {
-        return (((long)v1) << 32) | (v0 & 0xFFFFFFFFL);
     }
 
     public int get(int i, int j) {
@@ -44,6 +41,20 @@ public class VMatrix {
 
         res = res / (vertices.size() * (vertices.size() - 1));
         return res;
+    }
+
+    public IntPair diameterVertices() {
+        int maxmax = maxmax();
+
+        for (int v0 : vertices) {
+            for (int v1 : vertices) {
+                if (maxmax == get(v0, v1)) {
+                    return new IntPair(v0, v1);
+                }
+            }
+        }
+
+        throw new AssertionError();
     }
 
     public IntList maxmaxVertices() {
