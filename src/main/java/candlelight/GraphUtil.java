@@ -153,38 +153,70 @@ public class GraphUtil {
         return res;
     }
 
-    public static float commonNeighborsIndex(FastGraph graph, int v0, int v1) {
-        IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
-        intersection.retainAll(graph.getEdges(v1));
+    public static FMatrix commonNeighborsIndex(FastGraph graph) {
+        FMatrix res = new FMatrix();
 
-        return intersection.size();
-    }
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
+                intersection.retainAll(graph.getEdges(v1));
 
-    public static float jaccardsIndex(FastGraph graph, int v0, int v1) {
-        IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
-        intersection.retainAll(graph.getEdges(v1));
-
-        IntSet union = new IntOpenHashSet(graph.getEdges(v0));
-        union.addAll(graph.getEdges(v1));
-
-        return (float) intersection.size() / union.size();
-    }
-
-    public static float adamicAdarIndex(FastGraph graph, int v0, int v1) {
-        IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
-        intersection.retainAll(graph.getEdges(v1));
-
-        float res = 0;
-
-        for (int v : intersection) {
-            res = res + 1 / (float) Math.log(graph.getEdges(v).size());
+                res.put(v0, v1, intersection.size());
+            }
         }
 
         return res;
     }
 
-    public static float preferentialAttachmentIndex(FastGraph graph, int v0, int v1) {
-        return graph.getEdges(v0).size() * graph.getEdges(v1).size();
+    public static FMatrix jaccardsIndex(FastGraph graph) {
+        FMatrix res = new FMatrix();
+
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
+                intersection.retainAll(graph.getEdges(v1));
+
+                IntSet union = new IntOpenHashSet(graph.getEdges(v0));
+                union.addAll(graph.getEdges(v1));
+
+                res.put(v0, v1, (float) intersection.size() / union.size());
+            }
+        }
+
+        return res;
+    }
+
+    public static FMatrix adamicAdarIndex(FastGraph graph) {
+        FMatrix res = new FMatrix();
+
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
+                intersection.retainAll(graph.getEdges(v1));
+
+                float r = 0;
+
+                for (int v : intersection) {
+                    r = r + 1 / (float) Math.log(graph.getEdges(v).size());
+                }
+
+                res.put(v0, v1, r);
+            }
+        }
+
+        return res;
+    }
+
+    public static FMatrix preferentialAttachmentIndex(FastGraph graph) {
+        FMatrix res = new FMatrix();
+
+        for (int v0 : graph.getVertices()) {
+            for (int v1 : graph.getVertices()) {
+                res.put(v0, v1, graph.getEdges(v0).size() * graph.getEdges(v1).size());
+            }
+        }
+
+        return res;
     }
 
     public static Int2FloatMap eigenVectorCentrality(FastGraph graph) {
