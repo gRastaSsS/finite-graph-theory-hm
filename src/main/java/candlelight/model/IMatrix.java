@@ -1,12 +1,8 @@
-package candlelight.payload;
+package candlelight.model;
 
 import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import org.la4j.Matrix;
-import org.la4j.matrix.dense.Basic2DMatrix;
-
-import java.util.stream.Collectors;
 
 import static candlelight.Constants.MAX_MATRIX_VALUE;
 import static candlelight.mapper.IndexMapper.TD08_II_L;

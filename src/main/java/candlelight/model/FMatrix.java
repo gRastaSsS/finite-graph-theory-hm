@@ -1,12 +1,8 @@
-package candlelight.payload;
+package candlelight.model;
 
 import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.Long2FloatMap;
 import it.unimi.dsi.fastutil.longs.Long2FloatOpenHashMap;
-import org.la4j.Matrix;
-import org.la4j.matrix.dense.Basic2DMatrix;
-
-import java.util.stream.Collectors;
 
 import static candlelight.mapper.IndexMapper.TD08_II_L;
 
@@ -38,6 +34,15 @@ public class FMatrix {
 
         for (float v : core.values())
             res = Math.max(res, v);
+
+        return res;
+    }
+
+    public float minmin() {
+        float res = Float.MAX_VALUE;
+
+        for (float v : core.values())
+            res = Math.min(res, v);
 
         return res;
     }

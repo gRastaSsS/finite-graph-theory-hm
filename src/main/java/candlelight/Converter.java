@@ -1,7 +1,6 @@
 package candlelight;
 
-import candlelight.payload.FMatrix;
-import candlelight.payload.IMatrix;
+import candlelight.model.FMatrix;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import org.la4j.Matrix;
@@ -11,30 +10,6 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Converter {
-    public static Matrix iMatrixToUndirectedSkipMatrix(IMatrix iMatrix) {
-        Matrix matrix = new Basic2DMatrix(iMatrix.vertices().size(), iMatrix.vertices().size());
-
-        Int2IntMap indexMap = new Int2IntOpenHashMap();
-
-        int index = 0;
-        for (int vertex : iMatrix.vertices().stream().sorted().collect(Collectors.toList())) {
-            indexMap.put(vertex, index);
-            index++;
-        }
-
-        for (int v0 : iMatrix.vertices()) {
-            for (int v1 : iMatrix.vertices()) {
-                int index0 = indexMap.get(v0);
-                int index1 = indexMap.get(v1);
-
-                matrix.set(index0, index1, iMatrix.get(v0, v1));
-                matrix.set(index1, index0, iMatrix.get(v0, v1));
-            }
-        }
-
-        return matrix;
-    }
-
     public static Matrix fMatrixToUndirectedSkipMatrix(FMatrix fMatrix) {
         Matrix matrix = new Basic2DMatrix(fMatrix.vertices().size(), fMatrix.vertices().size());
 
@@ -59,26 +34,23 @@ public class Converter {
         return matrix;
     }
 
-    public static Matrix iMatrixToUndirectedMatrix(IMatrix iMatrix) {
-        Matrix matrix = new Basic2DMatrix(iMatrix.vertices().size(), iMatrix.vertices().size());
-
-        for (int v0 : iMatrix.vertices()) {
-            for (int v1 : iMatrix.vertices()) {
-                matrix.set(v0, v1, iMatrix.get(v0, v1));
-                matrix.set(v1, v0, iMatrix.get(v0, v1));
-            }
-        }
-
-        return matrix;
-    }
-
-    public static Matrix fMatrixToUndirectedMatrix(FMatrix fMatrix) {
+    public static Matrix fMatrixToMatrix(FMatrix fMatrix) {
         Matrix matrix = new Basic2DMatrix(fMatrix.vertices().size(), fMatrix.vertices().size());
+
+        Int2IntMap indexMap = new Int2IntOpenHashMap();
+
+        int index = 0;
+        for (int vertex : fMatrix.vertices().stream().sorted().collect(Collectors.toList())) {
+            indexMap.put(vertex, index);
+            index++;
+        }
 
         for (int v0 : fMatrix.vertices()) {
             for (int v1 : fMatrix.vertices()) {
-                matrix.set(v0, v1, fMatrix.get(v0, v1));
-                matrix.set(v1, v0, fMatrix.get(v0, v1));
+                int index0 = indexMap.get(v0);
+                int index1 = indexMap.get(v1);
+
+                matrix.set(index0, index1, fMatrix.get(v0, v1));
             }
         }
 

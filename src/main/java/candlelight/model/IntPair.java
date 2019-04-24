@@ -1,4 +1,4 @@
-package candlelight.payload;
+package candlelight.model;
 
 public class IntPair {
     public int i0, i1;

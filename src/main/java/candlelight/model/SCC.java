@@ -1,26 +1,22 @@
-package candlelight.payload;
+package candlelight.model;
 
 import java.util.Arrays;
 
-public class WCC {
+public class SCC {
     private final int[][] components;
 
-    public WCC(int[][] components) {
+    public SCC(int[][] components) {
         this.components = components;
     }
 
     @Override
     public String toString() {
-        StringBuilder out = new StringBuilder("Number of weakly connected components: " + components.length + ".\n");
+        StringBuilder out = new StringBuilder("Number of strongly connected components: " + components.length + ".\n");
         out.append("Components: \n");
 
         for (int[] c : components) {
             out.append(Arrays.toString(c)).append("; Number of vertices: ").append(c.length).append(".\n");
         }
-
-        out.append("\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n");
-        out.append("Max weakly connected component size: ").append(maxComponent().length).append(".\n");
-        out.append("Max weakly connected component size (relatively): ").append(maxComponentSizeRelative()).append(".\n");
 
         return out.toString();
     }

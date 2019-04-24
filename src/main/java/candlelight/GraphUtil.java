@@ -1,6 +1,6 @@
 package candlelight;
 
-import candlelight.payload.*;
+import candlelight.model.*;
 import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
@@ -155,6 +155,8 @@ public class GraphUtil {
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
+                if (v0 == v1) continue;
+
                 IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
                 intersection.retainAll(graph.getEdges(v1));
 
@@ -170,6 +172,8 @@ public class GraphUtil {
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
+                if (v0 == v1) continue;
+
                 IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
                 intersection.retainAll(graph.getEdges(v1));
 
@@ -188,13 +192,16 @@ public class GraphUtil {
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
+                if (v0 == v1) continue;
+
                 IntSet intersection = new IntOpenHashSet(graph.getEdges(v0));
                 intersection.retainAll(graph.getEdges(v1));
 
                 float r = 0;
 
                 for (int v : intersection) {
-                    r = r + 1 / (float) Math.log(graph.getEdges(v).size());
+                    int edges = graph.getEdges(v).size();
+                    r = r + 1f / edges;
                 }
 
                 res.put(v0, v1, r);
@@ -209,6 +216,8 @@ public class GraphUtil {
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
+                if (v0 == v1) continue;
+
                 res.put(v0, v1, graph.getEdges(v0).size() * graph.getEdges(v1).size());
             }
         }

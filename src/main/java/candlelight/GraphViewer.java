@@ -1,6 +1,6 @@
 package candlelight;
 
-import candlelight.payload.FMatrix;
+import candlelight.model.FMatrix;
 import it.unimi.dsi.fastutil.ints.Int2FloatMap;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
@@ -46,7 +46,7 @@ public class GraphViewer {
     }
 
     private void bindPanel(Viewer viewer) {
-        ViewPanel viewPanel = viewer.addDefaultView(false);
+        ViewPanel viewPanel = viewer.getDefaultView();
 
         viewPanel.addMouseWheelListener(e -> {
             if (e.getWheelRotation() == -1) {
@@ -91,8 +91,6 @@ public class GraphViewer {
                 last = event;
             }
         });
-
-        viewPanel.openInAFrame(true);
     }
 
     private String readFile(String path, Charset encoding) throws IOException {
@@ -102,6 +100,7 @@ public class GraphViewer {
 
     private static Graph toGraphstreamGraph(FastGraph graph) {
         Graph g = new SingleGraph(graph.toString());
+        g.addAttribute("ui.quality");
 
         graph.getVertices().forEach((IntConsumer) i -> g.addNode(String.valueOf(i)));
 
@@ -123,6 +122,7 @@ public class GraphViewer {
 
     private static Graph toGraphstreamGraph(FastGraph graph, FMatrix edgeMetrics, String style) {
         Graph g = new SingleGraph(graph.toString());
+        g.addAttribute("ui.quality");
         g.addAttribute("ui.stylesheet", style);
 
         graph.getVertices().forEach((IntConsumer) i -> g.addNode(String.valueOf(i)));
@@ -130,6 +130,7 @@ public class GraphViewer {
         Set<String> processed = new HashSet<>();
 
         float max = edgeMetrics.maxmax();
+        float min = edgeMetrics.minmin();
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getEdges(v0)) {
@@ -138,7 +139,7 @@ public class GraphViewer {
                     processed.add(id);
 
                     Edge edge = g.addEdge(id, String.valueOf(v0), String.valueOf(v1));
-                    edge.setAttribute("ui.color", (double) edgeMetrics.get(v0, v1) / max);
+                    edge.setAttribute("ui.color", ((double) edgeMetrics.get(v0, v1) - min) / (max - min));
                 }
             }
         }
@@ -148,13 +149,15 @@ public class GraphViewer {
 
     private static Graph toGraphstreamGraph(FastGraph graph, Int2FloatMap vertexMetrics, String style) {
         Graph g = new SingleGraph(graph.toString());
+        g.addAttribute("ui.quality");
         g.addAttribute("ui.stylesheet", style);
 
         float max = vertexMetrics.values().stream().max(Float::compareTo).get();
+        float min = vertexMetrics.values().stream().min(Float::compareTo).get();
 
         graph.getVertices().forEach((IntConsumer) i -> {
             Node n = g.addNode(String.valueOf(i));
-            n.setAttribute("ui.color", (double) vertexMetrics.get(i) / max);
+            n.setAttribute("ui.color", ((double) vertexMetrics.get(i) - min) / (max - min));
         });
 
         Set<String> processed = new HashSet<>();
