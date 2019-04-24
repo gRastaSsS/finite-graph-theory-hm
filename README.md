@@ -1,5 +1,9 @@
 # Теория конечных графов и ее приложения. Практическая работа
 
+**Исходный (сгенерированный) граф:** 
+
+https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/resources/getaway/vk-friends.gexf
+
 **Сторонние библиотеки:**
 - https://gephi.org/toolkit/ - импорт .gexf файлов;
 - http://fastutil.di.unimi.it/ - расширенная библиотека структур данных;
