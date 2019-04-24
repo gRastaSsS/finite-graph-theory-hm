@@ -11,9 +11,13 @@ https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/resourc
 - http://graphstream-project.org/ - визуализация графов:
 - https://knowm.org/open-source/xchart/ - построение гистограммы.
 
+**main-класс - [Main.java](https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/java/candlelight/Main.java)**
+
 **Класс графа - [FastGraph.java](https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/java/candlelight/model/FastGraph.java).**
 
 **Класс визуализации графа (с заданными метриками) - [GraphViewer.java](https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/java/candlelight/GraphViewer.java).**
+
+**Класс визуализации гистограммы - [ChartUtil.java](https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/java/candlelight/ChartUtil.java)**
 
 **Класс конвертации графа в матрицу смежности - [Converter.java](https://github.com/gRastaSsS/finite-graph-theory-hm/blob/master/src/main/java/candlelight/Converter.java).**
 
