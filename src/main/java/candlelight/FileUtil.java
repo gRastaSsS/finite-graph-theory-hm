@@ -40,6 +40,13 @@ public class FileUtil {
         return new File(classLoader.getResource(filePath).getFile());
     }
 
+    public static String loadResourceAsString(String filePath) throws IOException {
+        ClassLoader classLoader = FileUtil.class.getClassLoader();
+        File file = new File(classLoader.getResource(filePath).getFile());
+        byte[] encoded = Files.readAllBytes(file.toPath());
+        return new String(encoded, Charset.defaultCharset());
+    }
+
     public static void writeToFile(String filePath, String data) throws IOException {
         Path file0 = Paths.get(filePath);
         Files.write(file0, Collections.singleton(data), Charset.forName("UTF-8"));

@@ -1,5 +1,0 @@
-Graph diameter: 7
-Graph radius: 4
-Central vertices: [58, 65, 27, 31, 36, 41, 42, 54, 53, 30, 71, 7, 77, 79, 80]
-Peripheral vertices: [0, 25, 75, 29, 61, 20, 10, 5, 83]
-Average path length: 2.9620254

@@ -33,14 +33,14 @@ public class GraphViewer {
     }
 
     public GraphViewer(FastGraph graph, FMatrix edgeMetrics) throws IOException {
-        String edgeStyle = readFile("edge_style.css", Charset.defaultCharset());
+        String edgeStyle = FileUtil.loadResourceAsString("edge_style.css");
         Graph vg = toGraphstreamGraph(graph, edgeMetrics, edgeStyle);
         Viewer viewer = vg.display(true);
         bindPanel(viewer);
     }
 
     public GraphViewer(FastGraph graph, Int2FloatMap nodeMetrics) throws IOException {
-        String edgeStyle = readFile("node_style.css", Charset.defaultCharset());
+        String edgeStyle = FileUtil.loadResourceAsString("node_style.css");
         Graph vg = toGraphstreamGraph(graph, nodeMetrics, edgeStyle);
         Viewer viewer = vg.display(true);
         bindPanel(viewer);
@@ -92,11 +92,6 @@ public class GraphViewer {
                 last = event;
             }
         });
-    }
-
-    private String readFile(String path, Charset encoding) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
     }
 
     private static Graph toGraphstreamGraph(FastGraph graph) {
