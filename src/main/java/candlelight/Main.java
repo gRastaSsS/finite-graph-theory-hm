@@ -26,15 +26,12 @@ public class Main {
 
         FastGraph graph0 = Converter.gephiGraphToFastGraph(srcGraph);
 
-        WCC wcc = GraphUtil.weaklyConnectedComponents(graph0);
-        SCC scc = GraphUtil.stronglyConnectedComponents(graph0);
-
-        System.out.println(wcc);
-        System.out.println(scc);
+        //WCC wcc = GraphUtil.weaklyConnectedComponents(graph0);
+        //SCC scc = GraphUtil.stronglyConnectedComponents(graph0);
 
         //FileUtil.writeToFile("components.txt", scc.toString() + "\n" + wcc.toString());
 
-        //FastGraph graph1 = GraphUtil.ofComponent(wcc.maxComponent(), graph0).makeUndirected();
+        //FastGraph graph1 = Converter.componentToGraph(wcc.maxComponent(), graph0).makeUndirected();
 
         //task20(graph1);
         //task21(graph1);
@@ -60,8 +57,8 @@ public class Main {
         //FileUtil.writeToFile("adamic_adar.csv", fMatrixToMatrix(GraphUtil.adamicAdarIndex(graph1)).toCSV());
         //FileUtil.writeToFile("preferential_attachment.csv", fMatrixToMatrix(GraphUtil.preferentialAttachmentIndex(graph1)).toCSV());
 
-        //FileUtil.writeToFile("src_graph.csv", Converter.graphToAdjMatrix(graph0).toCSV());
-        //FileUtil.writeToFile("max_weakly_connected_component.csv", Converter.graphToAdjMatrix(graph1).toCSV());
+        //FileUtil.writeToFile("src_graph.csv", Converter.graphTola4jAdjMatrix(graph0).toCSV());
+        //FileUtil.writeToFile("max_weakly_connected_component.csv", Converter.graphTola4jAdjMatrix(graph1).toCSV());
 
         //Task20.run(graph);
         //Task30.run(graph);

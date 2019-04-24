@@ -27,20 +27,6 @@ public class GraphUtil {
         }
     }
 
-    public static FastGraph ofComponent(int[] component, FastGraph graph) {
-        FastGraph nGraph = new FastGraph(component.length);
-
-        for (int v0 : component) {
-            for (int v1 : component) {
-                if (graph.hasEdge(v0, v1)) {
-                    nGraph.addEdge(v0, v1);
-                }
-            }
-        }
-
-        return nGraph;
-    }
-
     public static SCC stronglyConnectedComponents(FastGraph graph) {
         Int2BooleanMap visited = new Int2BooleanOpenHashMap();
 
@@ -251,7 +237,7 @@ public class GraphUtil {
     public static Int2FloatMap eigenVectorCentrality(FastGraph graph) {
         Int2FloatMap result = new Int2FloatOpenHashMap();
 
-        Matrix adjMatrix = Converter.graphToAdjMatrix(graph);
+        Matrix adjMatrix = Converter.graphTola4jAdjMatrix(graph);
 
         MatrixDecompositor d = new EigenDecompositor(adjMatrix);
 

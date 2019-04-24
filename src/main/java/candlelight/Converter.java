@@ -14,6 +14,20 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Converter {
+    public static FastGraph componentToGraph(int[] component, FastGraph graph) {
+        FastGraph nGraph = new FastGraph(component.length);
+
+        for (int v0 : component) {
+            for (int v1 : component) {
+                if (graph.hasEdge(v0, v1)) {
+                    nGraph.addEdge(v0, v1);
+                }
+            }
+        }
+
+        return nGraph;
+    }
+
     public static FastGraph gephiGraphToFastGraph(Graph graph) {
         FastGraph g = new FastGraph(graph.getNodeCount());
 
@@ -56,7 +70,7 @@ public class Converter {
         return matrix;
     }
 
-    public static Matrix graphToAdjMatrix(FastGraph graph) {
+    public static Matrix graphTola4jAdjMatrix(FastGraph graph) {
         int size = graph.getVertices().stream().max(Comparator.comparingInt(integer -> integer)).get() + 1;
 
         Matrix matrix = new Basic2DMatrix(size, size);
