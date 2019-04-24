@@ -7,7 +7,7 @@
 - http://graphstream-project.org/ - визуализация графов:
 - https://knowm.org/open-source/xchart/ - построение гистограммы.
 
-**Исходный код программы (Java): **
+**Исходный код программы (Java):**
 https://github.com/gRastaSsS/finite-graph-theory-hm
 
 **Класс графа - FastGraph.**
