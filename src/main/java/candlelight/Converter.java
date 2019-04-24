@@ -14,6 +14,14 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Converter {
+    public static void printNodeAttribute(Graph graph, String name, int nodeId) {
+        for (Node n : graph.getNodes()) {
+            if (n.getStoreId() == nodeId) {
+                System.out.println(n.getAttribute(name));
+            }
+        }
+    }
+
     public static FastGraph componentToGraph(int[] component, FastGraph graph) {
         FastGraph nGraph = new FastGraph(component.length);
 

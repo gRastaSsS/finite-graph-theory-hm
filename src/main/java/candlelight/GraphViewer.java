@@ -33,14 +33,14 @@ public class GraphViewer {
     }
 
     public GraphViewer(FastGraph graph, FMatrix edgeMetrics) throws IOException {
-        String edgeStyle = FileUtil.loadResourceAsString("edge_style.css");
+        String edgeStyle = FileUtil.loadResourceAsString("getaway/edge_style.css");
         Graph vg = toGraphstreamGraph(graph, edgeMetrics, edgeStyle);
         Viewer viewer = vg.display(true);
         bindPanel(viewer);
     }
 
     public GraphViewer(FastGraph graph, Int2FloatMap nodeMetrics) throws IOException {
-        String edgeStyle = FileUtil.loadResourceAsString("node_style.css");
+        String edgeStyle = FileUtil.loadResourceAsString("getaway/node_style.css");
         Graph vg = toGraphstreamGraph(graph, nodeMetrics, edgeStyle);
         Viewer viewer = vg.display(true);
         bindPanel(viewer);

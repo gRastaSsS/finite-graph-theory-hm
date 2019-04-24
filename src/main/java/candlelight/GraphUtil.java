@@ -4,8 +4,6 @@ import candlelight.model.*;
 import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
-import org.gephi.graph.api.Graph;
-import org.gephi.graph.api.Node;
 import org.la4j.Matrix;
 import org.la4j.Vector;
 import org.la4j.decomposition.EigenDecompositor;
@@ -19,14 +17,6 @@ import java.util.stream.IntStream;
 import static candlelight.Constants.MAX_MATRIX_VALUE;
 
 public class GraphUtil {
-    public static void printNodeAttribute(Graph graph, String name, int nodeId) {
-        for (Node n : graph.getNodes()) {
-            if (n.getStoreId() == nodeId) {
-                System.out.println(n.getAttribute(name));
-            }
-        }
-    }
-
     public static SCC stronglyConnectedComponents(FastGraph graph) {
         Int2BooleanMap visited = new Int2BooleanOpenHashMap();
 
@@ -130,19 +120,17 @@ public class GraphUtil {
         return max;
     }
 
-    public static IMatrix undirectedShortestPaths(FastGraph graph) {
+    public static IMatrix shortestPaths(FastGraph graph) {
         IMatrix res = new IMatrix();
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
                 if (graph.hasEdge(v0, v1)) {
                     res.put(v0, v1, 1);
-                    res.put(v1, v0, 1);
                 }
 
                 else {
                     res.put(v0, v1, MAX_MATRIX_VALUE);
-                    res.put(v1, v0, MAX_MATRIX_VALUE);
                 }
             }
         }
@@ -275,7 +263,7 @@ public class GraphUtil {
     }
 
     public static Int2FloatMap closenessCentrality(FastGraph graph) {
-        IMatrix paths = undirectedShortestPaths(graph);
+        IMatrix paths = shortestPaths(graph);
 
         IntSet vertices = graph.getVertices();
 
@@ -364,7 +352,7 @@ public class GraphUtil {
     }
 
     public static OMatrix<ObjectList<IntList>> findAllShortestPaths(FastGraph graph) {
-        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
+        IMatrix shortest = GraphUtil.shortestPaths(graph);
 
         OMatrix<ObjectList<IntList>> shortestPaths = new OMatrix<>(graph.getVertices().size() * graph.getVertices().size());
 

@@ -1,13 +1,11 @@
 package candlelight;
 
-import candlelight.model.FastGraph;
-import candlelight.model.IMatrix;
-import candlelight.model.SCC;
-import candlelight.model.WCC;
+import candlelight.model.*;
 import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import org.gephi.graph.api.Graph;
 import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.CategoryChart;
@@ -26,12 +24,12 @@ public class Main {
 
         FastGraph graph0 = Converter.gephiGraphToFastGraph(srcGraph);
 
-        //WCC wcc = GraphUtil.weaklyConnectedComponents(graph0);
-        //SCC scc = GraphUtil.stronglyConnectedComponents(graph0);
+        WCC wcc = GraphUtil.weaklyConnectedComponents(graph0);
+        SCC scc = GraphUtil.stronglyConnectedComponents(graph0);
 
         //FileUtil.writeToFile("components.txt", scc.toString() + "\n" + wcc.toString());
 
-        //FastGraph graph1 = Converter.componentToGraph(wcc.maxComponent(), graph0).makeUndirected();
+        FastGraph graph1 = Converter.componentToGraph(wcc.maxComponent(), graph0).makeUndirected();
 
         //task20(graph1);
         //task21(graph1);
@@ -47,10 +45,10 @@ public class Main {
         //new GraphViewer(graph1, GraphUtil.closenessCentrality(graph1));
         //new GraphViewer(graph1, GraphUtil.eigenVectorCentrality(graph1));
 
-        //OMatrix<ObjectList<IntList>> shortestPaths = GraphUtil.findAllShortestPaths(graph1);
+        OMatrix<ObjectList<IntList>> shortestPaths = GraphUtil.findAllShortestPaths(graph1);
 
-        //new GraphViewer(graph1, GraphUtil.betweennessCentrality(graph1, shortestPaths));
-        //new GraphViewer(graph1, GraphUtil.edgeBetweennessCentrality(graph1, shortestPaths));
+        new GraphViewer(graph1, GraphUtil.betweennessCentrality(graph1, shortestPaths));
+        new GraphViewer(graph1, GraphUtil.edgeBetweennessCentrality(graph1, shortestPaths));
 
         //FileUtil.writeToFile("common_neighbors.csv", fMatrixToMatrix(GraphUtil.commonNeighborsIndex(graph1)).toCSV());
         //FileUtil.writeToFile("jaccards.csv", fMatrixToMatrix(GraphUtil.jaccardsIndex(graph1)).toCSV());
@@ -122,7 +120,7 @@ public class Main {
     }
 
     private static void task21(FastGraph graph) throws IOException {
-        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
+        IMatrix shortest = GraphUtil.shortestPaths(graph);
 
         String res =
                 "Graph diameter: " + shortest.maxmax() + "\n" +
