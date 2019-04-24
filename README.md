@@ -7,11 +7,8 @@
 - http://graphstream-project.org/ - визуализация графов:
 - https://knowm.org/open-source/xchart/ - построение гистограммы.
 
-**Исходный код программы (Java):**
-
-https://github.com/gRastaSsS/finite-graph-theory-hm
-
 **Класс графа - FastGraph.**
+**Класс визуализации графа (с заданными метриками) - GraphViewer.**
 **Все алгоритмы над графами реализованы в классе GraphUtil:**
 - stronglyConnectedComponents - нахождение компонент сильной связности через DFS;
 - weaklyConnectedComponents - нахождение компонент слабой связности через DFS;
