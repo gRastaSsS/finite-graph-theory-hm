@@ -1,5 +1,6 @@
 package candlelight;
 
+import candlelight.model.FastGraph;
 import candlelight.model.IMatrix;
 import candlelight.model.SCC;
 import candlelight.model.WCC;
@@ -21,19 +22,22 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Graph srcGraph = FileUtil.load("getaway/vk-friends.gexf");
+        Graph srcGraph = FileUtil.loadGephiGraph("getaway/vk-friends.gexf");
 
-        FastGraph graph0 = new FastGraph(srcGraph);
+        FastGraph graph0 = Converter.gephiGraphToFastGraph(srcGraph);
 
         WCC wcc = GraphUtil.weaklyConnectedComponents(graph0);
         SCC scc = GraphUtil.stronglyConnectedComponents(graph0);
 
+        System.out.println(wcc);
+        System.out.println(scc);
+
         //FileUtil.writeToFile("components.txt", scc.toString() + "\n" + wcc.toString());
 
-        FastGraph graph1 = GraphUtil.ofComponent(wcc.maxComponent(), graph0).makeUndirected();
+        //FastGraph graph1 = GraphUtil.ofComponent(wcc.maxComponent(), graph0).makeUndirected();
 
-        task20(graph1);
-        task21(graph1);
+        //task20(graph1);
+        //task21(graph1);
 
         //new GraphViewer(graph0);
 

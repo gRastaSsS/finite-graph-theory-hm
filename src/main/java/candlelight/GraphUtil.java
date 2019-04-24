@@ -12,7 +12,6 @@ import org.la4j.decomposition.EigenDecompositor;
 import org.la4j.decomposition.MatrixDecompositor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -43,17 +42,18 @@ public class GraphUtil {
     }
 
     public static SCC stronglyConnectedComponents(FastGraph graph) {
-        boolean[] visited = new boolean[graph.V()];
+        Int2BooleanMap visited = new Int2BooleanOpenHashMap();
 
         IntStack stack = new IntArrayList();
 
-        for (int i = 0; i < graph.V(); i++)
-            if (!visited[i])
-                graph.fillOrder(i, visited, stack);
+        for (int v : graph.getVertices()) {
+            if (!visited.get(v))
+                fillOrder(v, visited, stack, graph);
+        }
 
         graph = graph.makeTranspose();
 
-        Arrays.fill(visited, false);
+        visited.clear();
 
         List<int[]> components = new ArrayList<>();
         IntList temp = new IntArrayList();
@@ -61,8 +61,8 @@ public class GraphUtil {
         while (!stack.isEmpty()) {
             int v = stack.popInt();
 
-            if (!visited[v]) {
-                graph.dfs(v, visited, temp);
+            if (!visited.get(v)) {
+                dfs(v, visited, temp, graph);
                 components.add(temp.toIntArray());
                 temp.clear();
             }
@@ -72,7 +72,7 @@ public class GraphUtil {
     }
 
     public static WCC weaklyConnectedComponents(FastGraph graph) {
-        boolean[] visited = new boolean[graph.V()];
+        Int2BooleanMap visited = new Int2BooleanOpenHashMap();
 
         IntStack nodes = IntStream.range(0, graph.V()).collect(
                 (Supplier<IntStack>) IntArrayList::new,
@@ -88,14 +88,37 @@ public class GraphUtil {
         while (!nodes.isEmpty()) {
             int from = nodes.popInt();
 
-            if (!visited[from]) {
-                graph.dfs(from, visited, temp);
+            if (!visited.get(from)) {
+                dfs(from, visited, temp, graph);
                 components.add(temp.toIntArray());
                 temp.clear();
             }
         }
 
         return new WCC(components.toArray(new int[0][]));
+    }
+
+    public static void dfs(int v, Int2BooleanMap visited, IntList result, FastGraph g) {
+        visited.put(v, true);
+
+        result.add(v);
+
+        for (int n : g.getEdges(v)) {
+            if (!visited.get(n)) {
+                dfs(n, visited, result, g);
+            }
+        }
+    }
+
+    private static void fillOrder(int v, Int2BooleanMap visited, IntStack stack, FastGraph g) {
+        visited.put(v, true);
+
+        for (int n : g.getEdges(v)) {
+            if (!visited.get(n))
+                fillOrder(n, visited, stack, g);
+        }
+
+        stack.push(v);
     }
 
     public static IntList getDegrees(FastGraph graph) {

@@ -1,4 +1,4 @@
-package candlelight.mapper;
+package candlelight;
 
 public class IndexMapper {
     public static long TD08_II_L(int i0, int i1) {

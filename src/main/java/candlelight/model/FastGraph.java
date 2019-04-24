@@ -1,37 +1,22 @@
-package candlelight;
+package candlelight.model;
 
-import it.unimi.dsi.fastutil.ints.*;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import org.gephi.graph.api.Edge;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
-import org.la4j.Matrix;
-import org.la4j.matrix.dense.Basic2DMatrix;
 
-import java.util.Comparator;
-
-//https://www.geeksforgeeks.org/strongly-connected-components/
 public class FastGraph {
     private Int2ObjectMap<IntSet> adj;
 
-    public FastGraph(Graph graph) {
-        this.adj = new Int2ObjectOpenHashMap<>(graph.getNodeCount());
-
-        for (int i = 0; i < graph.getNodeCount(); ++i)
-            adj.put(i, new IntOpenHashSet());
-
-        for (Node node : graph.getNodes()) {
-            int index = node.getStoreId();
-
-            for (Edge edge : graph.getEdges(node)) {
-                if (edge.getSource().getStoreId() == index) {
-                    adj.get(index).add(edge.getTarget().getStoreId());
-                }
-            }
-        }
-    }
-
     public FastGraph(int V) {
         this.adj = new Int2ObjectOpenHashMap<>(V);
+    }
+
+    public void addVertex(int v) {
+        adj.put(v, new IntOpenHashSet());
     }
 
     public void addEdge(int v, int w) {
@@ -96,27 +81,5 @@ public class FastGraph {
         }
 
         return g;
-    }
-
-    public void dfs(int v, boolean[] visited, IntList result) {
-        visited[v] = true;
-        result.add(v);
-
-        for (int n : getEdges(v)) {
-            if (!visited[n]) {
-                dfs(n, visited, result);
-            }
-        }
-    }
-
-    public void fillOrder(int v, boolean[] visited, IntStack stack) {
-        visited[v] = true;
-
-        for (int n : getEdges(v)) {
-            if (!visited[n])
-                fillOrder(n, visited, stack);
-        }
-
-        stack.push(v);
     }
 }

@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.Collections;
 
 public class FileUtil {
-    public static Graph load(String fileName) throws Exception {
+    public static Graph loadGephiGraph(String fileName) throws Exception {
         ProjectController pc = Lookup.getDefault().lookup(ProjectController.class);
         pc.newProject();
         Workspace workspace = pc.getCurrentWorkspace();

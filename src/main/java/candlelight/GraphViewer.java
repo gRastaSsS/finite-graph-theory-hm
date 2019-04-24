@@ -1,6 +1,7 @@
 package candlelight;
 
 import candlelight.model.FMatrix;
+import candlelight.model.FastGraph;
 import it.unimi.dsi.fastutil.ints.Int2FloatMap;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;

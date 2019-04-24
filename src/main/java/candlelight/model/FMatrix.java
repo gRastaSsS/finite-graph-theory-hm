@@ -4,7 +4,7 @@ import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.Long2FloatMap;
 import it.unimi.dsi.fastutil.longs.Long2FloatOpenHashMap;
 
-import static candlelight.mapper.IndexMapper.TD08_II_L;
+import static candlelight.IndexMapper.TD08_II_L;
 
 public class FMatrix {
     private final Long2FloatMap core;

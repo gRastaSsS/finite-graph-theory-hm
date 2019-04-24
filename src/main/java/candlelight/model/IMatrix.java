@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 
 import static candlelight.Constants.MAX_MATRIX_VALUE;
-import static candlelight.mapper.IndexMapper.TD08_II_L;
+import static candlelight.IndexMapper.TD08_II_L;
 
 public class IMatrix {
     private final Long2IntMap core;

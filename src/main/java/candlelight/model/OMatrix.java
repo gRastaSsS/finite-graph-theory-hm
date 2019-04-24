@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-import static candlelight.mapper.IndexMapper.TD08_II_L;
+import static candlelight.IndexMapper.TD08_II_L;
 
 public class OMatrix<T> {
     private final Long2ObjectMap<T> core;
