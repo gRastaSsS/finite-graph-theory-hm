@@ -1,0 +1,4 @@
+node {
+    fill-mode: dyn-plain;
+    fill-color: red, green;
+}

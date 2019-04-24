@@ -12,7 +12,6 @@ import java.util.Comparator;
 //https://www.geeksforgeeks.org/strongly-connected-components/
 public class FastGraph {
     private Int2ObjectMap<IntSet> adj;
-    private long version;
 
     public FastGraph(Graph graph) {
         this.adj = new Int2ObjectOpenHashMap<>(graph.getNodeCount());
@@ -29,24 +28,17 @@ public class FastGraph {
                 }
             }
         }
-
-        this.version = 0;
     }
 
     public FastGraph(int V) {
         this.adj = new Int2ObjectOpenHashMap<>(V);
-        this.version = 0;
     }
 
     public void addEdge(int v, int w) {
-        ++version;
-
         adj.computeIfAbsent(v, i -> new IntOpenHashSet()).add(w);
     }
 
     public void addUndirectedEdge(int v, int w) {
-        ++version;
-
         adj.computeIfAbsent(v, i -> new IntOpenHashSet()).add(w);
         adj.computeIfAbsent(w, i -> new IntOpenHashSet()).add(v);
     }
@@ -77,20 +69,6 @@ public class FastGraph {
         }
 
         return r;
-    }
-
-    public Matrix toAdjMatrix() {
-        int size = getVertices().stream().max(Comparator.comparingInt(integer -> integer)).get() + 1;
-
-        Matrix matrix = new Basic2DMatrix(size, size);
-
-        for (int v0 : getVertices()) {
-            for (int v1 : getEdges(v0)) {
-                matrix.set(v0, v1, 1);
-            }
-        }
-
-        return matrix;
     }
 
     public FastGraph makeUndirected() {

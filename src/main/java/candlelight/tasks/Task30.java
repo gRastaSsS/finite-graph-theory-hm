@@ -1,5 +1,6 @@
 package candlelight.tasks;
 
+import candlelight.Converter;
 import candlelight.FastGraph;
 import candlelight.GraphUtil;
 import org.la4j.Matrix;
@@ -11,12 +12,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 
+import static candlelight.GraphUtil.*;
+
 public class Task30 {
     public static void run(FastGraph graph) throws IOException {
-        Matrix commonNeighbors = GraphUtil.commonNeighborsIndex(graph).toUndirectedMatrix();
-        Matrix jaccards = GraphUtil.jaccardsIndex(graph).toUndirectedMatrix();
-        Matrix adamicAdar = GraphUtil.adamicAdarIndex(graph).toUndirectedMatrix();
-        Matrix preferentialAttachment = GraphUtil.preferentialAttachmentIndex(graph).toUndirectedMatrix();
+        Matrix commonNeighbors = Converter.fMatrixToUndirectedSkipMatrix(commonNeighborsIndex(graph));
+        Matrix jaccards = Converter.fMatrixToUndirectedSkipMatrix(jaccardsIndex(graph));
+        Matrix adamicAdar = Converter.fMatrixToUndirectedSkipMatrix(adamicAdarIndex(graph));
+        Matrix preferentialAttachment = Converter.fMatrixToUndirectedSkipMatrix(preferentialAttachmentIndex(graph));
 
         Path file0 = Paths.get("common_neighbors");
         Files.write(file0, Collections.singleton(commonNeighbors.toCSV()), Charset.forName("UTF-8"));

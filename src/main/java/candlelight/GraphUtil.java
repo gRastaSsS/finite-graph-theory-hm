@@ -6,13 +6,10 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
 import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
-import org.la4j.Matrices;
 import org.la4j.Matrix;
 import org.la4j.Vector;
 import org.la4j.decomposition.EigenDecompositor;
 import org.la4j.decomposition.MatrixDecompositor;
-import org.la4j.vector.dense.BasicVector;
-import org.la4j.vector.functor.VectorPredicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -222,7 +219,7 @@ public class GraphUtil {
     public static Int2FloatMap eigenVectorCentrality(FastGraph graph) {
         Int2FloatMap result = new Int2FloatOpenHashMap();
 
-        Matrix adjMatrix = graph.toAdjMatrix();
+        Matrix adjMatrix = Converter.graphToAdjMatrix(graph);
 
         MatrixDecompositor d = new EigenDecompositor(adjMatrix);
 
@@ -249,7 +246,7 @@ public class GraphUtil {
         return result;
     }
 
-    public static Int2FloatMap degreeCenrality(FastGraph graph) {
+    public static Int2FloatMap degreeCentrality(FastGraph graph) {
         Int2FloatMap result = new Int2FloatOpenHashMap();
 
         for (int v : graph.getVertices()) {
@@ -278,22 +275,8 @@ public class GraphUtil {
         return result;
     }
 
-    public static Int2FloatMap betweennessCentrality(FastGraph graph) {
+    public static Int2FloatMap betweennessCentrality(FastGraph graph, OMatrix<ObjectList<IntList>> shortestPaths) {
         Int2FloatMap result = new Int2FloatOpenHashMap();
-
-        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
-
-        OMatrix<ObjectList<IntList>> shortestPaths = new OMatrix<>(graph.getVertices().size() * graph.getVertices().size());
-
-        for (int s : graph.getVertices()) {
-            for (int t : graph.getVertices()) {
-                if (s != t && shortestPaths.get(s, t) == null) {
-                    ObjectList<IntList> res = findAllPaths(graph, s, t, shortest.get(s, t) + 1);
-                    shortestPaths.put(s, t, res);
-                    shortestPaths.put(t, s, res);
-                }
-            }
-        }
 
         for (int v : graph.getVertices()) {
             float res = 0;
@@ -321,22 +304,8 @@ public class GraphUtil {
         return result;
     }
 
-    public static FMatrix edgeBetweennessCentrality(FastGraph graph) {
+    public static FMatrix edgeBetweennessCentrality(FastGraph graph, OMatrix<ObjectList<IntList>> shortestPaths) {
         FMatrix result = new FMatrix();
-
-        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
-
-        OMatrix<ObjectList<IntList>> shortestPaths = new OMatrix<>(graph.getVertices().size() * graph.getVertices().size());
-
-        for (int s : graph.getVertices()) {
-            for (int t : graph.getVertices()) {
-                if (s != t && shortestPaths.get(s, t) == null) {
-                    ObjectList<IntList> res = findAllPaths(graph, s, t, shortest.get(s, t) + 1);
-                    shortestPaths.put(s, t, res);
-                    shortestPaths.put(t, s, res);
-                }
-            }
-        }
 
         for (int v0 : graph.getVertices()) {
             for (int v1 : graph.getVertices()) {
@@ -374,6 +343,24 @@ public class GraphUtil {
         }
 
         return result;
+    }
+
+    public static OMatrix<ObjectList<IntList>> findAllShortestPaths(FastGraph graph) {
+        IMatrix shortest = GraphUtil.undirectedShortestPaths(graph);
+
+        OMatrix<ObjectList<IntList>> shortestPaths = new OMatrix<>(graph.getVertices().size() * graph.getVertices().size());
+
+        for (int s : graph.getVertices()) {
+            for (int t : graph.getVertices()) {
+                if (s != t && shortestPaths.get(s, t) == null) {
+                    ObjectList<IntList> res = findAllPaths(graph, s, t, shortest.get(s, t) + 1);
+                    shortestPaths.put(s, t, res);
+                    shortestPaths.put(t, s, res);
+                }
+            }
+        }
+
+        return shortestPaths;
     }
 
     private static ObjectList<IntList> findAllPaths(FastGraph graph, int s, int d, int maxPathLength) {

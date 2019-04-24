@@ -1,11 +1,12 @@
 package candlelight.payload;
 
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.Long2FloatMap;
 import it.unimi.dsi.fastutil.longs.Long2FloatOpenHashMap;
 import org.la4j.Matrix;
 import org.la4j.matrix.dense.Basic2DMatrix;
+
+import java.util.stream.Collectors;
 
 import static candlelight.mapper.IndexMapper.TD08_II_L;
 
@@ -32,17 +33,12 @@ public class FMatrix {
         vertices.add(j);
     }
 
-    public Matrix toUndirectedMatrix() {
-        int maxIndex = vertices.stream().max(Integer::compareTo).get();
-        Matrix matrix = new Basic2DMatrix(maxIndex + 1, maxIndex + 1);
+    public float maxmax() {
+        float res = 0;
 
-        for (int v0 : vertices) {
-            for (int v1 : vertices) {
-                matrix.set(v0, v1, get(v0, v1));
-                matrix.set(v1, v0, get(v0, v1));
-            }
-        }
+        for (float v : core.values())
+            res = Math.max(res, v);
 
-        return matrix;
+        return res;
     }
 }

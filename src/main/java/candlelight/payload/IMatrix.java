@@ -3,6 +3,10 @@ package candlelight.payload;
 import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import org.la4j.Matrix;
+import org.la4j.matrix.dense.Basic2DMatrix;
+
+import java.util.stream.Collectors;
 
 import static candlelight.Constants.MAX_MATRIX_VALUE;
 import static candlelight.mapper.IndexMapper.TD08_II_L;
@@ -14,6 +18,10 @@ public class IMatrix {
     public IMatrix() {
         core = new Long2IntOpenHashMap();
         vertices = new IntOpenHashSet();
+    }
+
+    public IntSet vertices() {
+        return vertices;
     }
 
     public int get(int i, int j) {
