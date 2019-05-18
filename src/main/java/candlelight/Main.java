@@ -1,13 +1,8 @@
 package candlelight;
 
-import candlelight.model.FastGraph;
-import candlelight.model.IMatrix;
-import candlelight.model.SCC;
-import candlelight.model.WCC;
-import it.unimi.dsi.fastutil.ints.Int2IntArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntList;
+import candlelight.model.*;
+import it.unimi.dsi.fastutil.ints.*;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import org.gephi.graph.api.Graph;
 
 import java.io.IOException;
@@ -17,19 +12,22 @@ import java.util.stream.Collectors;
 
 public class Main {
     private static FastGraph generateFastGraph() throws Exception {
-        Graph srcGraph = FileUtil.loadGephiGraph("getaway/vk-friends.gexf");
+        Graph srcGraph = FileUtil.loadGephiGraph("getaway/graph.gexf");
         return Converter.gephiGraphToFastGraph(srcGraph);
     }
 
     public static void main(String[] args) throws Exception {
         FastGraph graph = generateFastGraph();
 
-        //WCC wcc = GraphUtil.weaklyConnectedComponents(graph);
+        WCC wcc = GraphUtil.weaklyConnectedComponents(graph);
         //SCC scc = GraphUtil.stronglyConnectedComponents(graph);
+
+        //System.out.println(wcc);
+       // System.out.println(scc);
 
         //FileUtil.writeToFile("components.txt", scc.toString() + "\n" + wcc.toString());
 
-        //FastGraph compGraph = Converter.componentToGraph(wcc.maxComponent(), graph).makeUndirected();
+        FastGraph compGraph = Converter.componentToGraph(wcc.maxComponent(), graph).makeUndirected();
 
         //task20(compGraph);
         //task21(compGraph);
@@ -38,12 +36,22 @@ public class Main {
 
         //new GraphViewer(compGraph, GraphUtil.commonNeighborsIndex(graph1));
         //new GraphViewer(compGraph, GraphUtil.jaccardsIndex(graph1));
-        //new GraphViewer(compGraph, GraphUtil.adamicAdarIndex(graph1));
+        //new GraphViewer(compGraph, GraphUtil.adamicAdarIndex(compGraph));
         //new GraphViewer(compGraph, GraphUtil.preferentialAttachmentIndex(graph1));
 
-        //new GraphViewer(compGraph, GraphUtil.degreeCentrality(graph1));
-        //new GraphViewer(compGraph, GraphUtil.closenessCentrality(graph1));
-        //new GraphViewer(compGraph, GraphUtil.eigenVectorCentrality(graph1));
+        //OMatrix<ObjectList<IntList>> shortestPath = GraphUtil.findAllShortestPaths(compGraph);
+
+        Int2FloatMap degreeCentrality = GraphUtil.degreeCentrality(compGraph);
+        //Int2FloatMap closenessCentrality = GraphUtil.closenessCentrality(compGraph);
+        //Int2FloatMap eigenVectorCentrality = GraphUtil.eigenVectorCentrality(compGraph);
+        //Int2FloatMap betweennessCentrality = GraphUtil.betweennessCentrality(compGraph, shortestPath);
+
+        new GraphViewer(compGraph, degreeCentrality);
+        //new GraphViewer(compGraph, closenessCentrality);
+        //new GraphViewer(compGraph, eigenVectorCentrality);
+        //new GraphViewer(compGraph, betweennessCentrality);
+
+        System.out.println(degreeCentrality);
 
         //FileUtil.writeToFile("common_neighbors.csv", fMatrixToMatrix(GraphUtil.commonNeighborsIndex(compGraph)).toCSV());
         //FileUtil.writeToFile("jaccards.csv", fMatrixToMatrix(GraphUtil.jaccardsIndex(compGraph)).toCSV());

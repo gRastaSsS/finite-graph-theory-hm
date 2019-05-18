@@ -9,7 +9,7 @@ import org.gephi.graph.api.Graph;
 import org.gephi.graph.api.Node;
 
 public class FastGraph {
-    private Int2ObjectMap<IntSet> adj;
+    private final Int2ObjectMap<IntSet> adj;
 
     public FastGraph(int V) {
         this.adj = new Int2ObjectOpenHashMap<>(V);

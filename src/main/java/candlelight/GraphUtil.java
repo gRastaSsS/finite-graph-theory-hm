@@ -256,7 +256,7 @@ public class GraphUtil {
         Int2FloatMap result = new Int2FloatOpenHashMap();
 
         for (int v : graph.getVertices()) {
-            result.put(v, graph.getEdges(v).size());
+            result.put(v, (float) graph.getEdges(v).size() / (graph.getVertices().size() - 1));
         }
 
         return result;
@@ -275,6 +275,7 @@ public class GraphUtil {
                 s += paths.get(v, e);
 
             s = (vertices.size() - 1) / s;
+
             result.put(v, s);
         }
 

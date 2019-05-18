@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+	<graph defaultedgetype="directed">
+		<attributes class="node">
+			<attribute id="0" title="first_name" type="string" />
+			<attribute id="1" title="last_name" type="string" />
+			<attribute id="2" title="nickname" type="string" />
+			<attribute id="3" title="screen_name" type="string" />
+			<attribute id="4" title="sex" type="integer" />
+			<attribute id="5" title="photo_50" type="string" />
+			<attribute id="6" title="relation" type="integer" />
+			<attribute id="7" title="country" type="integer" />
+			<attribute id="8" title="city" type="integer" />
+			<attribute id="9" title="bdate" type="string" />
+			<attribute id="10" title="timezone" type="integer" />
+		</attributes>
+		<nodes>
+			<node id="114913" label="Светлана Дюрягина">
+				<attvalues>
+					<attvalue for="0" value="Светлана" />
+					<attvalue for="1" value="Дюрягина" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="dyuryagina_svetka" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/zzVNO3WcLbTY9sy9itIZ2DzDzQE3KpuieFKVEw/VL1wOPQKv6s.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+				</attvalues>
+			</node>
+			<node id="488329" label="Вася Шевчук">
+				<attvalues>
+					<attvalue for="0" value="Вася" />
+					<attvalue for="1" value="Шевчук" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id488329" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/jveTrtcP2poIdsIwUJNamP7cDW4yDszYsRxYSA/hCp6XBSKKkE.jpg?ava=1" />
+					<attvalue for="6" value="1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="26.6.1989" />
+				</attvalues>
+			</node>
+			<node id="10015045" label="Даниил Гайдайчук">
+				<attvalues>
+					<attvalue for="0" value="Даниил" />
+					<attvalue for="1" value="Гайдайчук" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="haydaychuk" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c836637/v836637533/55329/J9VYVa7dCyI.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="0" />
+					<attvalue for="9" value="4.1" />
+				</attvalues>
+			</node>
+			<node id="11627865" label="Мария Боруха">
+				<attvalues>
+					<attvalue for="0" value="Мария" />
+					<attvalue for="1" value="Боруха" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="maybeemoi" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://sun9-29.userapi.com/c851524/v851524325/159e2/VIqk_tNbbPM.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="17.8.1993" />
+				</attvalues>
+			</node>
+			<node id="12080386" label="Сергей Кузьмин">
+				<attvalues>
+					<attvalue for="0" value="Сергей" />
+					<attvalue for="1" value="Кузьмин" />
+					<attvalue for="2" value="kooc" />
+					<attvalue for="3" value="id12080386" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c631829/v631829386/293bd/C03iI5By3EU.jpg?ava=1" />
+					<attvalue for="6" value="4" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="42" />
+					<attvalue for="9" value="9.5.1973" />
+				</attvalues>
+			</node>
+			<node id="13496102" label="Ольга Ренёва">
+				<attvalues>
+					<attvalue for="0" value="Ольга" />
+					<attvalue for="1" value="Ренёва" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id13496102" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c849024/v849024906/8f3e2/2XWWUReo-EI.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="1573" />
+				</attvalues>
+			</node>
+			<node id="21365955" label="Лена Аксенова">
+				<attvalues>
+					<attvalue for="0" value="Лена" />
+					<attvalue for="1" value="Аксенова" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id21365955" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c9660/u21365955/e_2d3d5f01.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="0" />
+					<attvalue for="9" value="8.3" />
+				</attvalues>
+			</node>
+			<node id="28315548" label="Дмитрий Севастюк">
+				<attvalues>
+					<attvalue for="0" value="Дмитрий" />
+					<attvalue for="1" value="Севастюк" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id28315548" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c639922/v639922548/12f52/vcBVuuon1-o.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="19.11.1996" />
+				</attvalues>
+			</node>
+			<node id="36175307" label="Александра Гаврилова">
+				<attvalues>
+					<attvalue for="0" value="Александра" />
+					<attvalue for="1" value="Гаврилова" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id36175307" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c846323/v846323501/a1dc7/bC0KYofEnKQ.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="29.5" />
+				</attvalues>
+			</node>
+			<node id="41580584" label="Аня Прокошкина">
+				<attvalues>
+					<attvalue for="0" value="Аня" />
+					<attvalue for="1" value="Прокошкина" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id41580584" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://sun9-11.userapi.com/c850424/v850424642/88e9d/X-1SjxXLfcw.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="25.9.1998" />
+				</attvalues>
+			</node>
+			<node id="50952050" label="Олег Моисеев">
+				<attvalues>
+					<attvalue for="0" value="Олег" />
+					<attvalue for="1" value="Моисеев" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="olezshka_m" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c845419/v845419646/54c92/UJHoP5v6paY.jpg?ava=1" />
+					<attvalue for="6" value="1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="26.8.1998" />
+				</attvalues>
+			</node>
+			<node id="58555820" label="Владислав Купряков">
+				<attvalues>
+					<attvalue for="0" value="Владислав" />
+					<attvalue for="1" value="Купряков" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="kupryakovv" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://sun9-30.userapi.com/c831208/v831208281/1c2552/3AEDy_78-OA.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+				</attvalues>
+			</node>
+			<node id="59477024" label="Ирина Цеханович">
+				<attvalues>
+					<attvalue for="0" value="Ирина" />
+					<attvalue for="1" value="Цеханович" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="irinatsekhanovich" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c845522/v845522910/123419/IHkRO5ZRxqc.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="3.1.1998" />
+				</attvalues>
+			</node>
+			<node id="64004147" label="Егор Будлов">
+				<attvalues>
+					<attvalue for="0" value="Егор" />
+					<attvalue for="1" value="Будлов" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="egor_budlov" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c845417/v845417330/1e23da/mD_2PH1QL8M.jpg?ava=1" />
+					<attvalue for="6" value="1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="6.6" />
+				</attvalues>
+			</node>
+			<node id="67446082" label="Анастасия Берлина">
+				<attvalues>
+					<attvalue for="0" value="Анастасия" />
+					<attvalue for="1" value="Берлина" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="nastena_berlina" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c846016/v846016126/ee3b5/LoLCaijFX9k.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="29.7.1997" />
+				</attvalues>
+			</node>
+			<node id="76411897" label="Александр Гоготов">
+				<attvalues>
+					<attvalue for="0" value="Александр" />
+					<attvalue for="1" value="Гоготов" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="gogotovsasha" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c855136/v855136755/187d8/UWhePUILix8.jpg?ava=1" />
+					<attvalue for="6" value="1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="25.6.1998" />
+				</attvalues>
+			</node>
+			<node id="78602687" label="Артем Паскевич">
+				<attvalues>
+					<attvalue for="0" value="Артем" />
+					<attvalue for="1" value="Паскевич" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="paskevich_artem" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c638322/v638322687/4688a/4z8S6ulRBjU.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="6.9.1996" />
+				</attvalues>
+			</node>
+			<node id="80659889" label="Маша Голубева">
+				<attvalues>
+					<attvalue for="0" value="Маша" />
+					<attvalue for="1" value="Голубева" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="alisum" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c846016/v846016437/9a2c2/-CkMR-Vi3fc.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="13.11.1998" />
+				</attvalues>
+			</node>
+			<node id="82892660" label="Григор Хачатрян">
+				<attvalues>
+					<attvalue for="0" value="Григор" />
+					<attvalue for="1" value="Хачатрян" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="i82892777" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c840138/v840138033/77fde/wjLfed-y1mk.jpg?ava=1" />
+					<attvalue for="6" value="1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="28.3" />
+				</attvalues>
+			</node>
+			<node id="92216487" label="Мария Канивец">
+				<attvalues>
+					<attvalue for="0" value="Мария" />
+					<attvalue for="1" value="Канивец" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="kanivetsm" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://sun9-13.userapi.com/c824503/v824503489/16b9f2/GJa3sZVQRzs.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="49" />
+					<attvalue for="9" value="9.5.1998" />
+				</attvalues>
+			</node>
+			<node id="102945985" label="Данил Балавнев">
+				<attvalues>
+					<attvalue for="0" value="Данил" />
+					<attvalue for="1" value="Балавнев" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id102945985" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c630225/v630225985/3cacf/q3FzmuRyPHk.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="15.10" />
+				</attvalues>
+			</node>
+			<node id="119301334" label="Владислав Герасимов">
+				<attvalues>
+					<attvalue for="0" value="Владислав" />
+					<attvalue for="1" value="Герасимов" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="a_third_wheel" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://vk.com/images/camera_50.png?ava=1" />
+					<attvalue for="7" value="0" />
+					<attvalue for="8" value="0" />
+				</attvalues>
+			</node>
+			<node id="134070307" label="Жора Григорьев">
+				<attvalues>
+					<attvalue for="0" value="Жора" />
+					<attvalue for="1" value="Григорьев" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="thepowerfuldeez" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c852032/v852032052/1588f/c5-tC3QhS4A.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="28.12.1998" />
+				</attvalues>
+			</node>
+			<node id="137252115" label="Глеб Щербаков">
+				<attvalues>
+					<attvalue for="0" value="Глеб" />
+					<attvalue for="1" value="Щербаков" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id137252115" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c631321/v631321115/4dbc8/TtfqKheI_ag.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="0" />
+					<attvalue for="8" value="0" />
+					<attvalue for="9" value="7.5.1997" />
+				</attvalues>
+			</node>
+			<node id="157062074" label="Кирилл Жадан">
+				<attvalues>
+					<attvalue for="0" value="Кирилл" />
+					<attvalue for="1" value="Жадан" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id157062074" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c841134/v841134001/4d349/j3HCZrKLZ60.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="19.3" />
+				</attvalues>
+			</node>
+			<node id="162138098" label="Николай Фролов">
+				<attvalues>
+					<attvalue for="0" value="Николай" />
+					<attvalue for="1" value="Фролов" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="lucifer8101" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c639217/v639217783/6ac53/r-a5kb4r4lo.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="1.5.1991" />
+				</attvalues>
+			</node>
+			<node id="164285180" label="Никита Поваляев">
+				<attvalues>
+					<attvalue for="0" value="Никита" />
+					<attvalue for="1" value="Поваляев" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id164285180" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c848628/v848628394/44aa3/4--sQ_7mrUg.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="14.7.1998" />
+				</attvalues>
+			</node>
+			<node id="169387028" label="Артем Лысенко">
+				<attvalues>
+					<attvalue for="0" value="Артем" />
+					<attvalue for="1" value="Лысенко" />
+					<attvalue for="2" value="Геннадьевич" />
+					<attvalue for="3" value="id169387028" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c10337/v10337028/216/nL5XOkmcZOA.jpg?ava=1" />
+					<attvalue for="6" value="1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="1.11.1997" />
+				</attvalues>
+			</node>
+			<node id="177123098" label="Василий Васильев">
+				<attvalues>
+					<attvalue for="0" value="Василий" />
+					<attvalue for="1" value="Васильев" />
+					<attvalue for="2" value="Васильевич" />
+					<attvalue for="3" value="vasar007" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c845321/v845321462/c573a/_zwI60T0muU.jpg?ava=1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="0" />
+				</attvalues>
+			</node>
+			<node id="194682140" label="Александр Тимофеев">
+				<attvalues>
+					<attvalue for="0" value="Александр" />
+					<attvalue for="1" value="Тимофеев" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id194682140" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c831508/v831508518/1cd9e6/1VIWS80R7BM.jpg?ava=1" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="71" />
+					<attvalue for="9" value="16.8" />
+				</attvalues>
+			</node>
+			<node id="216953513" label="Александр Родионов">
+				<attvalues>
+					<attvalue for="0" value="Александр" />
+					<attvalue for="1" value="Родионов" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="rexarrior" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c854416/v854416892/b7f2/VLwoGadqA7E.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="1" />
+					<attvalue for="9" value="17.9" />
+				</attvalues>
+			</node>
+			<node id="225812577" label="Егор Глушков">
+				<attvalues>
+					<attvalue for="0" value="Егор" />
+					<attvalue for="1" value="Глушков" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="exp98" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c850032/v850032337/66b70/9HxyTMaM2jI.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="0" />
+					<attvalue for="9" value="9.12" />
+				</attvalues>
+			</node>
+			<node id="272342301" label="Алексей Ренёв">
+				<attvalues>
+					<attvalue for="0" value="Алексей" />
+					<attvalue for="1" value="Ренёв" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="novostroi.store" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c845122/v845122019/540e7/XRezvt9LbEo.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="1573" />
+					<attvalue for="9" value="7.2.2001" />
+				</attvalues>
+			</node>
+			<node id="334779665" label="Андрей Карпин">
+				<attvalues>
+					<attvalue for="0" value="Андрей" />
+					<attvalue for="1" value="Карпин" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id334779665" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c639726/v639726232/49900/QgwthB1Jans.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="0" />
+					<attvalue for="8" value="0" />
+					<attvalue for="9" value="11.8.1972" />
+				</attvalues>
+			</node>
+			<node id="373044930" label="Студсовет Пм-Пу">
+				<attvalues>
+					<attvalue for="0" value="Студсовет" />
+					<attvalue for="1" value="Пм-Пу" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="predsedatel_pmpu" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://sun9-34.userapi.com/c834202/v834202635/187820/nKxrQzBSTw8.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="17.3" />
+				</attvalues>
+			</node>
+			<node id="374868070" label="Татьяна Зубахина">
+				<attvalues>
+					<attvalue for="0" value="Татьяна" />
+					<attvalue for="1" value="Зубахина" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id374868070" />
+					<attvalue for="4" value="1" />
+					<attvalue for="5" value="https://pp.userapi.com/c849028/v849028623/1696a5/RDf8g4I08DY.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="2" />
+					<attvalue for="9" value="20.11.1997" />
+				</attvalues>
+			</node>
+			<node id="439306088" label="Юра Малыгин">
+				<attvalues>
+					<attvalue for="0" value="Юра" />
+					<attvalue for="1" value="Малыгин" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="id439306088" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c637226/v637226645/68bcb/M5KQ781Nnz4.jpg?ava=1" />
+					<attvalue for="6" value="6" />
+					<attvalue for="7" value="1" />
+					<attvalue for="8" value="1573" />
+					<attvalue for="9" value="7.9.1982" />
+				</attvalues>
+			</node>
+			<node id="486163600" label="Артём Пак">
+				<attvalues>
+					<attvalue for="0" value="Артём" />
+					<attvalue for="1" value="Пак" />
+					<attvalue for="2" value="" />
+					<attvalue for="3" value="akumaaa1337" />
+					<attvalue for="4" value="2" />
+					<attvalue for="5" value="https://pp.userapi.com/c847220/v847220825/190a12/9Vf7X9Cfm5M.jpg?ava=1" />
+					<attvalue for="6" value="0" />
+					<attvalue for="7" value="229" />
+					<attvalue for="8" value="5421571" />
+					<attvalue for="9" value="15.4.1998" />
+				</attvalues>
+			</node>
+		</nodes>
+		<edges>
+			<edge id="1" source="114913" target="13496102" />
+			<edge id="2" source="114913" target="334779665" />
+			<edge id="3" source="488329" target="92216487" />
+			<edge id="4" source="10015045" target="36175307" />
+			<edge id="5" source="10015045" target="41580584" />
+			<edge id="6" source="10015045" target="67446082" />
+			<edge id="7" source="10015045" target="78602687" />
+			<edge id="8" source="10015045" target="80659889" />
+			<edge id="9" source="10015045" target="119301334" />
+			<edge id="10" source="10015045" target="157062074" />
+			<edge id="11" source="10015045" target="177123098" />
+			<edge id="12" source="10015045" target="216953513" />
+			<edge id="13" source="10015045" target="373044930" />
+			<edge id="14" source="13496102" target="114913" />
+			<edge id="15" source="13496102" target="92216487" />
+			<edge id="16" source="13496102" target="272342301" />
+			<edge id="17" source="13496102" target="334779665" />
+			<edge id="18" source="13496102" target="439306088" />
+			<edge id="19" source="28315548" target="64004147" />
+			<edge id="20" source="28315548" target="76411897" />
+			<edge id="21" source="28315548" target="216953513" />
+			<edge id="22" source="36175307" target="10015045" />
+			<edge id="23" source="36175307" target="41580584" />
+			<edge id="24" source="36175307" target="50952050" />
+			<edge id="25" source="36175307" target="58555820" />
+			<edge id="26" source="36175307" target="59477024" />
+			<edge id="27" source="36175307" target="64004147" />
+			<edge id="28" source="36175307" target="80659889" />
+			<edge id="29" source="36175307" target="82892660" />
+			<edge id="30" source="36175307" target="102945985" />
+			<edge id="31" source="36175307" target="119301334" />
+			<edge id="32" source="36175307" target="137252115" />
+			<edge id="33" source="36175307" target="164285180" />
+			<edge id="34" source="36175307" target="169387028" />
+			<edge id="35" source="36175307" target="177123098" />
+			<edge id="36" source="36175307" target="194682140" />
+			<edge id="37" source="36175307" target="216953513" />
+			<edge id="38" source="36175307" target="225812577" />
+			<edge id="39" source="36175307" target="373044930" />
+			<edge id="40" source="36175307" target="374868070" />
+			<edge id="41" source="41580584" target="10015045" />
+			<edge id="42" source="41580584" target="36175307" />
+			<edge id="43" source="41580584" target="50952050" />
+			<edge id="44" source="41580584" target="59477024" />
+			<edge id="45" source="41580584" target="82892660" />
+			<edge id="46" source="41580584" target="102945985" />
+			<edge id="47" source="41580584" target="169387028" />
+			<edge id="48" source="41580584" target="194682140" />
+			<edge id="49" source="41580584" target="225812577" />
+			<edge id="50" source="41580584" target="373044930" />
+			<edge id="51" source="50952050" target="36175307" />
+			<edge id="52" source="50952050" target="41580584" />
+			<edge id="53" source="50952050" target="58555820" />
+			<edge id="54" source="50952050" target="59477024" />
+			<edge id="55" source="50952050" target="82892660" />
+			<edge id="56" source="50952050" target="119301334" />
+			<edge id="57" source="50952050" target="164285180" />
+			<edge id="58" source="50952050" target="169387028" />
+			<edge id="59" source="50952050" target="177123098" />
+			<edge id="60" source="50952050" target="194682140" />
+			<edge id="61" source="50952050" target="216953513" />
+			<edge id="62" source="50952050" target="225812577" />
+			<edge id="63" source="50952050" target="373044930" />
+			<edge id="64" source="50952050" target="374868070" />
+			<edge id="65" source="58555820" target="36175307" />
+			<edge id="66" source="58555820" target="50952050" />
+			<edge id="67" source="58555820" target="59477024" />
+			<edge id="68" source="58555820" target="64004147" />
+			<edge id="69" source="58555820" target="67446082" />
+			<edge id="70" source="58555820" target="76411897" />
+			<edge id="71" source="58555820" target="102945985" />
+			<edge id="72" source="58555820" target="164285180" />
+			<edge id="73" source="58555820" target="177123098" />
+			<edge id="74" source="58555820" target="216953513" />
+			<edge id="75" source="58555820" target="225812577" />
+			<edge id="76" source="58555820" target="374868070" />
+			<edge id="77" source="59477024" target="36175307" />
+			<edge id="78" source="59477024" target="41580584" />
+			<edge id="79" source="59477024" target="50952050" />
+			<edge id="80" source="59477024" target="58555820" />
+			<edge id="81" source="59477024" target="67446082" />
+			<edge id="82" source="59477024" target="78602687" />
+			<edge id="83" source="59477024" target="80659889" />
+			<edge id="84" source="59477024" target="82892660" />
+			<edge id="85" source="59477024" target="102945985" />
+			<edge id="86" source="59477024" target="134070307" />
+			<edge id="87" source="59477024" target="157062074" />
+			<edge id="88" source="59477024" target="164285180" />
+			<edge id="89" source="59477024" target="169387028" />
+			<edge id="90" source="59477024" target="194682140" />
+			<edge id="91" source="59477024" target="216953513" />
+			<edge id="92" source="59477024" target="225812577" />
+			<edge id="93" source="59477024" target="373044930" />
+			<edge id="94" source="64004147" target="28315548" />
+			<edge id="95" source="64004147" target="36175307" />
+			<edge id="96" source="64004147" target="58555820" />
+			<edge id="97" source="64004147" target="67446082" />
+			<edge id="98" source="64004147" target="76411897" />
+			<edge id="99" source="64004147" target="78602687" />
+			<edge id="100" source="64004147" target="82892660" />
+			<edge id="101" source="64004147" target="102945985" />
+			<edge id="102" source="64004147" target="134070307" />
+			<edge id="103" source="64004147" target="137252115" />
+			<edge id="104" source="64004147" target="216953513" />
+			<edge id="105" source="64004147" target="225812577" />
+			<edge id="106" source="64004147" target="373044930" />
+			<edge id="107" source="64004147" target="374868070" />
+			<edge id="108" source="67446082" target="10015045" />
+			<edge id="109" source="67446082" target="58555820" />
+			<edge id="110" source="67446082" target="59477024" />
+			<edge id="111" source="67446082" target="64004147" />
+			<edge id="112" source="67446082" target="76411897" />
+			<edge id="113" source="67446082" target="78602687" />
+			<edge id="114" source="67446082" target="82892660" />
+			<edge id="115" source="67446082" target="102945985" />
+			<edge id="116" source="67446082" target="137252115" />
+			<edge id="117" source="67446082" target="225812577" />
+			<edge id="118" source="67446082" target="373044930" />
+			<edge id="119" source="67446082" target="374868070" />
+			<edge id="120" source="76411897" target="28315548" />
+			<edge id="121" source="76411897" target="58555820" />
+			<edge id="122" source="76411897" target="64004147" />
+			<edge id="123" source="76411897" target="67446082" />
+			<edge id="124" source="76411897" target="78602687" />
+			<edge id="125" source="76411897" target="82892660" />
+			<edge id="126" source="76411897" target="102945985" />
+			<edge id="127" source="76411897" target="134070307" />
+			<edge id="128" source="76411897" target="137252115" />
+			<edge id="129" source="76411897" target="216953513" />
+			<edge id="130" source="76411897" target="225812577" />
+			<edge id="131" source="76411897" target="373044930" />
+			<edge id="132" source="76411897" target="374868070" />
+			<edge id="133" source="78602687" target="10015045" />
+			<edge id="134" source="78602687" target="59477024" />
+			<edge id="135" source="78602687" target="64004147" />
+			<edge id="136" source="78602687" target="67446082" />
+			<edge id="137" source="78602687" target="76411897" />
+			<edge id="138" source="78602687" target="102945985" />
+			<edge id="139" source="78602687" target="137252115" />
+			<edge id="140" source="78602687" target="157062074" />
+			<edge id="141" source="78602687" target="225812577" />
+			<edge id="142" source="78602687" target="373044930" />
+			<edge id="143" source="78602687" target="374868070" />
+			<edge id="144" source="80659889" target="10015045" />
+			<edge id="145" source="80659889" target="36175307" />
+			<edge id="146" source="80659889" target="59477024" />
+			<edge id="147" source="80659889" target="82892660" />
+			<edge id="148" source="80659889" target="119301334" />
+			<edge id="149" source="80659889" target="157062074" />
+			<edge id="150" source="80659889" target="177123098" />
+			<edge id="151" source="80659889" target="373044930" />
+			<edge id="152" source="82892660" target="36175307" />
+			<edge id="153" source="82892660" target="41580584" />
+			<edge id="154" source="82892660" target="50952050" />
+			<edge id="155" source="82892660" target="59477024" />
+			<edge id="156" source="82892660" target="64004147" />
+			<edge id="157" source="82892660" target="67446082" />
+			<edge id="158" source="82892660" target="76411897" />
+			<edge id="159" source="82892660" target="80659889" />
+			<edge id="160" source="82892660" target="102945985" />
+			<edge id="161" source="82892660" target="157062074" />
+			<edge id="162" source="82892660" target="194682140" />
+			<edge id="163" source="82892660" target="216953513" />
+			<edge id="164" source="82892660" target="225812577" />
+			<edge id="165" source="82892660" target="373044930" />
+			<edge id="166" source="92216487" target="488329" />
+			<edge id="167" source="92216487" target="13496102" />
+			<edge id="168" source="92216487" target="272342301" />
+			<edge id="169" source="102945985" target="36175307" />
+			<edge id="170" source="102945985" target="41580584" />
+			<edge id="171" source="102945985" target="58555820" />
+			<edge id="172" source="102945985" target="59477024" />
+			<edge id="173" source="102945985" target="64004147" />
+			<edge id="174" source="102945985" target="67446082" />
+			<edge id="175" source="102945985" target="76411897" />
+			<edge id="176" source="102945985" target="78602687" />
+			<edge id="177" source="102945985" target="82892660" />
+			<edge id="178" source="102945985" target="194682140" />
+			<edge id="179" source="102945985" target="216953513" />
+			<edge id="180" source="102945985" target="373044930" />
+			<edge id="181" source="119301334" target="10015045" />
+			<edge id="182" source="119301334" target="36175307" />
+			<edge id="183" source="119301334" target="50952050" />
+			<edge id="184" source="119301334" target="80659889" />
+			<edge id="185" source="119301334" target="157062074" />
+			<edge id="186" source="119301334" target="177123098" />
+			<edge id="187" source="119301334" target="225812577" />
+			<edge id="188" source="119301334" target="373044930" />
+			<edge id="189" source="134070307" target="59477024" />
+			<edge id="190" source="134070307" target="64004147" />
+			<edge id="191" source="134070307" target="76411897" />
+			<edge id="192" source="134070307" target="225812577" />
+			<edge id="193" source="137252115" target="36175307" />
+			<edge id="194" source="137252115" target="64004147" />
+			<edge id="195" source="137252115" target="67446082" />
+			<edge id="196" source="137252115" target="76411897" />
+			<edge id="197" source="137252115" target="78602687" />
+			<edge id="198" source="137252115" target="157062074" />
+			<edge id="199" source="137252115" target="177123098" />
+			<edge id="200" source="137252115" target="216953513" />
+			<edge id="201" source="137252115" target="225812577" />
+			<edge id="202" source="137252115" target="373044930" />
+			<edge id="203" source="157062074" target="10015045" />
+			<edge id="204" source="157062074" target="59477024" />
+			<edge id="205" source="157062074" target="78602687" />
+			<edge id="206" source="157062074" target="80659889" />
+			<edge id="207" source="157062074" target="82892660" />
+			<edge id="208" source="157062074" target="119301334" />
+			<edge id="209" source="157062074" target="137252115" />
+			<edge id="210" source="157062074" target="177123098" />
+			<edge id="211" source="157062074" target="225812577" />
+			<edge id="212" source="157062074" target="373044930" />
+			<edge id="213" source="164285180" target="36175307" />
+			<edge id="214" source="164285180" target="50952050" />
+			<edge id="215" source="164285180" target="58555820" />
+			<edge id="216" source="164285180" target="59477024" />
+			<edge id="217" source="164285180" target="169387028" />
+			<edge id="218" source="164285180" target="177123098" />
+			<edge id="219" source="164285180" target="373044930" />
+			<edge id="220" source="164285180" target="374868070" />
+			<edge id="221" source="169387028" target="36175307" />
+			<edge id="222" source="169387028" target="41580584" />
+			<edge id="223" source="169387028" target="50952050" />
+			<edge id="224" source="169387028" target="59477024" />
+			<edge id="225" source="169387028" target="164285180" />
+			<edge id="226" source="169387028" target="177123098" />
+			<edge id="227" source="169387028" target="194682140" />
+			<edge id="228" source="169387028" target="216953513" />
+			<edge id="229" source="169387028" target="373044930" />
+			<edge id="230" source="177123098" target="10015045" />
+			<edge id="231" source="177123098" target="36175307" />
+			<edge id="232" source="177123098" target="50952050" />
+			<edge id="233" source="177123098" target="58555820" />
+			<edge id="234" source="177123098" target="80659889" />
+			<edge id="235" source="177123098" target="119301334" />
+			<edge id="236" source="177123098" target="137252115" />
+			<edge id="237" source="177123098" target="157062074" />
+			<edge id="238" source="177123098" target="164285180" />
+			<edge id="239" source="177123098" target="169387028" />
+			<edge id="240" source="177123098" target="194682140" />
+			<edge id="241" source="177123098" target="216953513" />
+			<edge id="242" source="177123098" target="225812577" />
+			<edge id="243" source="177123098" target="373044930" />
+			<edge id="244" source="194682140" target="36175307" />
+			<edge id="245" source="194682140" target="41580584" />
+			<edge id="246" source="194682140" target="50952050" />
+			<edge id="247" source="194682140" target="59477024" />
+			<edge id="248" source="194682140" target="82892660" />
+			<edge id="249" source="194682140" target="102945985" />
+			<edge id="250" source="194682140" target="169387028" />
+			<edge id="251" source="194682140" target="177123098" />
+			<edge id="252" source="194682140" target="216953513" />
+			<edge id="253" source="194682140" target="225812577" />
+			<edge id="254" source="194682140" target="373044930" />
+			<edge id="255" source="216953513" target="10015045" />
+			<edge id="256" source="216953513" target="28315548" />
+			<edge id="257" source="216953513" target="36175307" />
+			<edge id="258" source="216953513" target="50952050" />
+			<edge id="259" source="216953513" target="58555820" />
+			<edge id="260" source="216953513" target="59477024" />
+			<edge id="261" source="216953513" target="64004147" />
+			<edge id="262" source="216953513" target="76411897" />
+			<edge id="263" source="216953513" target="82892660" />
+			<edge id="264" source="216953513" target="102945985" />
+			<edge id="265" source="216953513" target="137252115" />
+			<edge id="266" source="216953513" target="169387028" />
+			<edge id="267" source="216953513" target="177123098" />
+			<edge id="268" source="216953513" target="194682140" />
+			<edge id="269" source="216953513" target="225812577" />
+			<edge id="270" source="216953513" target="374868070" />
+			<edge id="271" source="225812577" target="36175307" />
+			<edge id="272" source="225812577" target="41580584" />
+			<edge id="273" source="225812577" target="50952050" />
+			<edge id="274" source="225812577" target="58555820" />
+			<edge id="275" source="225812577" target="59477024" />
+			<edge id="276" source="225812577" target="64004147" />
+			<edge id="277" source="225812577" target="67446082" />
+			<edge id="278" source="225812577" target="76411897" />
+			<edge id="279" source="225812577" target="78602687" />
+			<edge id="280" source="225812577" target="82892660" />
+			<edge id="281" source="225812577" target="119301334" />
+			<edge id="282" source="225812577" target="134070307" />
+			<edge id="283" source="225812577" target="137252115" />
+			<edge id="284" source="225812577" target="157062074" />
+			<edge id="285" source="225812577" target="177123098" />
+			<edge id="286" source="225812577" target="194682140" />
+			<edge id="287" source="225812577" target="216953513" />
+			<edge id="288" source="225812577" target="374868070" />
+			<edge id="289" source="272342301" target="13496102" />
+			<edge id="290" source="272342301" target="92216487" />
+			<edge id="291" source="272342301" target="334779665" />
+			<edge id="292" source="272342301" target="439306088" />
+			<edge id="293" source="334779665" target="114913" />
+			<edge id="294" source="334779665" target="13496102" />
+			<edge id="295" source="334779665" target="272342301" />
+			<edge id="296" source="334779665" target="439306088" />
+			<edge id="297" source="373044930" target="10015045" />
+			<edge id="298" source="373044930" target="36175307" />
+			<edge id="299" source="373044930" target="41580584" />
+			<edge id="300" source="373044930" target="50952050" />
+			<edge id="301" source="373044930" target="59477024" />
+			<edge id="302" source="373044930" target="64004147" />
+			<edge id="303" source="373044930" target="67446082" />
+			<edge id="304" source="373044930" target="76411897" />
+			<edge id="305" source="373044930" target="78602687" />
+			<edge id="306" source="373044930" target="80659889" />
+			<edge id="307" source="373044930" target="82892660" />
+			<edge id="308" source="373044930" target="102945985" />
+			<edge id="309" source="373044930" target="119301334" />
+			<edge id="310" source="373044930" target="137252115" />
+			<edge id="311" source="373044930" target="157062074" />
+			<edge id="312" source="373044930" target="164285180" />
+			<edge id="313" source="373044930" target="169387028" />
+			<edge id="314" source="373044930" target="177123098" />
+			<edge id="315" source="373044930" target="194682140" />
+			<edge id="316" source="373044930" target="374868070" />
+			<edge id="317" source="374868070" target="36175307" />
+			<edge id="318" source="374868070" target="50952050" />
+			<edge id="319" source="374868070" target="58555820" />
+			<edge id="320" source="374868070" target="64004147" />
+			<edge id="321" source="374868070" target="67446082" />
+			<edge id="322" source="374868070" target="76411897" />
+			<edge id="323" source="374868070" target="78602687" />
+			<edge id="324" source="374868070" target="164285180" />
+			<edge id="325" source="374868070" target="216953513" />
+			<edge id="326" source="374868070" target="225812577" />
+			<edge id="327" source="374868070" target="373044930" />
+			<edge id="328" source="439306088" target="13496102" />
+			<edge id="329" source="439306088" target="272342301" />
+			<edge id="330" source="439306088" target="334779665" />
+		</edges>
+	</graph>
+</gexf>
